@@ -1,0 +1,22 @@
+@import "./base.css";
+
+#app {
+  margin: 0;
+  font-weight: normal;
+}
+
+button{
+  padding: 0.5rem 1rem;
+  font-size: 15px;
+  border: solid 2px var(--color-navbar-border);
+  border-radius: 10px;
+  background-color: var(--color-button-background);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+button:hover{
+  transition: 0.2s;
+  background-color: var(--color-button-background-highlight);
+  cursor: pointer;
+  transition: 0.4s;
+}
