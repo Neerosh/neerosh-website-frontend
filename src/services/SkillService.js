@@ -2,9 +2,9 @@ import axios from "axios";
 
 const url = "api/resume/skills";
 
-class PostService {
+class SkillService {
   //GET posts
-  static getPosts(){
+  static getSkills(){
     return new Promise(async (resolve, reject) => {
       try {
         const res = await axios.get(url);
@@ -21,4 +21,4 @@ class PostService {
   }
 }
 
-export default PostService;
+export default SkillService;

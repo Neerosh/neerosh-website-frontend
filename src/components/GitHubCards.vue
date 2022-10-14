@@ -1,6 +1,7 @@
 <script>
   import UserIcon from './icons/UserIcon.vue';
   import RepositoryIcon from './icons/RepositoryIcon.vue';
+	import GithubService from '../services/GithubService.js';
 
 	export default {
 		props:{ 
@@ -20,38 +21,17 @@
 		},
 		methods:{
 			async RunSearch(){
-				const profileRequest = 'https://api.github.com/users/'+this.username
-				const profileResponse = await fetch(profileRequest);
-				const profileJSON = await profileResponse.json();
-				//console.log(profileJSON);
-				if (profileJSON.message){
-					this.searchResult = 'Error: '+profileJSON.message
+				const service = new GithubService(this.username)
+				const responseUser = await service.getUser()
+				if (responseUser.message){
+					this.searchResult = 'Error: '+responseUser.message
 					return
 				}
 
-				const repositoriesRequest = 'https://api.github.com/users/'+this.username+'/repos'
-				const repositoriesResponse= await fetch(repositoriesRequest);
-				const repositoriesJSON = await repositoriesResponse.json();
-				//console.log(repositoriesJSON);
+				const responseUserRepo = await service.getUserRepositories()
 
-				const repositoriesArray = [].slice.call(repositoriesJSON);
-
-				const optionsDate= { day:"numeric", year:"numeric", month:"short", hour:"numeric",minute:"numeric"};
-
-				repositoriesArray.sort(function(a, b){
-					let date1 = new Date(a.pushed_at)
-					let date2 = new Date(b.pushed_at)
-					//order dates recent to older
-					return date2 - date1;
-				})
-
-				repositoriesArray.forEach(repo => {
-				let dateLastUpdate= new Date (repo.pushed_at);
-				repo.updated_at = dateLastUpdate.toLocaleDateString('en-US', optionsDate);
-				});
-
-				this.profile = profileJSON
-				this.repositories = repositoriesArray
+				this.profile = responseUser
+				this.repositories = service.sortRepositoriesDate(responseUserRepo)
 				this.searchResult = 'Success'
 			}
 		},

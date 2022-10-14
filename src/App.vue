@@ -1,10 +1,10 @@
 <script setup>
   import { RouterLink, RouterView } from 'vue-router';
   import { ref } from 'vue'
-  import HomeIcon from './components/icons/HomeIcon.vue';
-  import ProjectsIcon from './components/icons/ProjectsIcon.vue';
-  import ResumeIcon from './components/icons/ResumeIcon.vue';
-  import ContactIcon from './components/icons/ContactIcon.vue';
+  import HomeIcon from './components/icons/menu/HomeIcon.vue';
+  import ProjectsIcon from './components/icons/menu/ProjectsIcon.vue';
+  import ResumeIcon from './components/icons/menu/ResumeIcon.vue';
+  import ContactIcon from './components/icons/menu/ContactIcon.vue';
 
   const navIconHeight = ref('22px')
   const navIconWidth = ref('22px')

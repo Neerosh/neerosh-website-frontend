@@ -1,5 +1,5 @@
 <script setup>
-  import DynamicDevList from '../components/DynamicDevList.vue';
+  import DynamicDevList from './DynamicDevList.vue';
 
   const props = defineProps({
     item: Object,

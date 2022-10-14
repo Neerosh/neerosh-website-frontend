@@ -1,10 +1,10 @@
 <script setup>
   import { ref } from 'vue'
-  import IntroductionIcon from '../components/icons/IntroductionIcon.vue';
-  import EducationIcon from '../components/icons/EducationIcon.vue';
-  import ExperienceIcon from '../components/icons/ExperienceIcon.vue';
-  import DeveloperIcon from '../components/icons/DeveloperIcon.vue';
-  import SkillSection from '../components/SkillSection.vue';
+  import IntroductionIcon from '../components/icons/resume/IntroductionIcon.vue';
+  import EducationIcon from '../components/icons/resume/EducationIcon.vue';
+  import ExperienceIcon from '../components/icons/resume/ExperienceIcon.vue';
+  import DeveloperIcon from '../components/icons/resume/DeveloperIcon.vue';
+  import SkillSection from '../components/resume/SkillSection.vue';
   const headingIconHeight = ref('30px')
   const headingIconWidth= ref('30px')
 </script>

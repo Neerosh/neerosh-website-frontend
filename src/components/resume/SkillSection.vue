@@ -1,10 +1,10 @@
 <script>
-  import CodeIcon from '../components/icons/CodeIcon.vue';
-  import ToolsIcon from '../components/icons/ToolsIcon.vue';
-  import SkillsIcon from '../components/icons/SkillsIcon.vue';
-  import DynamicDevList from '../components/DynamicDevList.vue';
-  import DynamicDevCard from '../components/DynamicDevCard.vue';
-  import SkillsService from '../SkillsService';
+  import CodeIcon from '../icons/resume/CodeIcon.vue';
+  import ToolsIcon from '../icons/resume/ToolsIcon.vue';
+  import SkillsIcon from '../icons/resume/SkillsIcon.vue';
+  import DynamicDevList from './DynamicDevList.vue';
+  import DynamicDevCard from './DynamicDevCard.vue';
+  import SkillService from '../../services/SkillService';
 
   function changeSkillCardParent(name){
     index.value = skillsList.findIndex((element) => element.name == name)
@@ -32,7 +32,7 @@
       CodeIcon,ToolsIcon,SkillsIcon,DynamicDevList,DynamicDevCard
     },
     async created(){
-      this.skillsList = await SkillsService.getPosts();
+      this.skillsList = await SkillService.getSkills();
     },
     methods:{
       changeSkillCardParent(_id){
