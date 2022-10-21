@@ -39,10 +39,7 @@
 			if (this.executeWhenCreated){
 				this.RunSearch()
 			}
-		},
-		async updated(){
-			this.RunSearch()
-		},
+		}
 	}
 
 </script>
