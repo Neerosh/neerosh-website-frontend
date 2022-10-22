@@ -51,6 +51,7 @@
   }
   .info-description{
     margin-top: 0.4rem;
+    color: var(--color-text-secondary);
   }
   .info-icon-wrapper{
     min-width: 80px;

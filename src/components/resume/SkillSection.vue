@@ -2,13 +2,12 @@
   import CodeIcon from '../icons/resume/CodeIcon.vue';
   import ToolsIcon from '../icons/resume/ToolsIcon.vue';
   import SkillsIcon from '../icons/resume/SkillsIcon.vue';
-  import DynamicDevList from './DynamicDevList.vue';
-  import DynamicDevCard from './DynamicDevCard.vue';
+  import DynamicDevList from '../DynamicDevList.vue';
+  import DynamicDevCard from '../DynamicDevCard.vue';
   import SkillService from '../../services/SkillService';
 
   function changeSkillCardParent(name){
     index.value = skillsList.findIndex((element) => element.name == name)
-    //console.log(skillsList[index])
     skillCardShow.value = true
   }
 

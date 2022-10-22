@@ -14,11 +14,13 @@ class ExperienceService {
             ...experience
           }))
         );
+
       } catch (err){
         reject(err);
       }
     })
   }
+
 }
 
 export default ExperienceService;

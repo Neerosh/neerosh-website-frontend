@@ -2,7 +2,7 @@
   import { ref } from 'vue'
   import IntroductionIcon from '../components/icons/resume/IntroductionIcon.vue';
   import EducationIcon from '../components/icons/resume/EducationIcon.vue';
-  import ExperienceIcon from '../components/icons/resume/ExperienceIcon.vue';
+  import ExperienceSection from '../components/resume/ExperienceSection.vue';
   import DeveloperIcon from '../components/icons/resume/DeveloperIcon.vue';
   import SkillSection from '../components/resume/SkillSection.vue';
   const headingIconHeight = ref('30px')
@@ -32,13 +32,7 @@
     </p>
   </section>
   <br>
-  <section name="Experience">
-    <h2 class="resume-section-heading">
-      <ExperienceIcon class="svg-heading" v-bind:height="headingIconHeight" v-bind:width="headingIconWidth"/>Experience
-    </h2>
-    <p class="resume-section-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at leo malesuada, porttitor urna in, sodales urna. Nam rhoncus metus pellentesque imperdiet lobortis. Quisque pretium turpis sem, ac egestas nibh tincidunt sit amet. Phasellus pulvinar felis et lorem tincidunt, eu lacinia orci lacinia. Duis consequat quam id venenatis aliquam. Quisque iaculis sapien sed ipsum semper, non scelerisque neque tristique. Pellentesque egestas, dolor non lacinia dictum, orci erat rhoncus risus, sit amet elementum augue urna non mi. Maecenas vitae nunc luctus dui gravida efficitur. In vitae elit sed libero hendrerit eleifend. Nulla non nulla velit. Praesent magna odio, bibendum et orci quis, porttitor sodales lacus. Nullam eros justo, ultrices ac interdum non, maximus quis mi. Fusce volutpat molestie nulla, quis semper nisi. Donec vel ex ut tellus lacinia condimentum. Fusce bibendum feugiat lectus, et scelerisque urna suscipit sed. Pellentesque sed elementum nibh.
-    </p>
-  </section>
+  <ExperienceSection />
   <br>
   <SkillSection />
 </template>

@@ -1,22 +1,22 @@
 <script setup>
-  import AndroidIcon from '../icons/development/languages/AndroidIcon.vue';
-  import C_Icon from '../icons/development/languages/C_Icon.vue';
-  import CsharpIcon from '../icons/development/languages/CsharpIcon.vue';
-  import ClarionIcon from '../icons/development/languages/ClarionIcon.vue';
-  import CssIcon from '../icons/development/languages/CssIcon.vue';
-  import ElectronIcon from '../icons/development/languages/ElectronIcon.vue';
-  import HtmlIcon from '../icons/development/languages/HtmlIcon.vue';
-  import JavaIcon from '../icons/development/languages/JavaIcon.vue';
-  import JavascriptIcon from '../icons/development/languages/JavascriptIcon.vue';
-  import PhpIcon from '../icons/development/languages/PhpIcon.vue';
-  import PythonIcon from '../icons/development/languages/PythonIcon.vue';
+  import AndroidIcon from './icons/development/languages/AndroidIcon.vue';
+  import C_Icon from './icons/development/languages/C_Icon.vue';
+  import CsharpIcon from './icons/development/languages/CsharpIcon.vue';
+  import ClarionIcon from './icons/development/languages/ClarionIcon.vue';
+  import CssIcon from './icons/development/languages/CssIcon.vue';
+  import ElectronIcon from './icons/development/languages/ElectronIcon.vue';
+  import HtmlIcon from './icons/development/languages/HtmlIcon.vue';
+  import JavaIcon from './icons/development/languages/JavaIcon.vue';
+  import JavascriptIcon from './icons/development/languages/JavascriptIcon.vue';
+  import PhpIcon from './icons/development/languages/PhpIcon.vue';
+  import PythonIcon from './icons/development/languages/PythonIcon.vue';
 
-  import GitHubIcon from '../icons/development/tools/GitHubIcon.vue';
-  import LinuxIcon from '../icons/development/tools/LinuxIcon.vue';
-  import MysqlIcon from '../icons/development/tools/MysqlIcon.vue';
-  import SqliteIcon from '../icons/development/tools/SqliteIcon.vue';
-  import SqlServerIcon from '../icons/development/tools/SqlServerIcon.vue';
-  import WindowsIcon from '../icons/development/tools/WindowsIcon.vue';
+  import GitHubIcon from './icons/development/tools/GitHubIcon.vue';
+  import LinuxIcon from './icons/development/tools/LinuxIcon.vue';
+  import MysqlIcon from './icons/development/tools/MysqlIcon.vue';
+  import SqliteIcon from './icons/development/tools/SqliteIcon.vue';
+  import SqlServerIcon from './icons/development/tools/SqlServerIcon.vue';
+  import WindowsIcon from './icons/development/tools/WindowsIcon.vue';
 
   const props = defineProps({
     iconName: String,
