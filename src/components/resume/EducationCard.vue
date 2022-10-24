@@ -1,7 +1,7 @@
 <script setup>
   import LocationIcon from '../icons/resume/LocationIcon.vue'
-  import WorkPositionIcon from '../icons/resume/WorkPositionIcon.vue'
   import CalendarIcon from '../icons/CalendarIcon.vue'
+  import GraduationIcon from '../icons/resume/GraduationIcon.vue';
   const props = defineProps({
     item: Object,
   })
@@ -11,15 +11,16 @@
 <template>
   <div class="card">
     <div class="card-body">
-      <h3 class="work-position">
-        <WorkPositionIcon class="svg-margin" v-bind:height="'20px'" v-bind:width="'20px'" />
-        {{ item.name }}</h3>
+      <h3 class="education-position">
+        <GraduationIcon class="svg-margin" v-bind:height="'20px'" v-bind:width="'20px'" />
+        {{ item.name }}
+      </h3>
       <div class="flex-row">
-        <h4 class="work-location">
+        <h4 class="education-location">
           <LocationIcon class="svg-margin" v-bind:height="'15px'" v-bind:width="'15px'" />
           {{ item.location }}
         </h4>
-        <h4 class="work-dates">
+        <h4 class="education-dates">
           <CalendarIcon class="svg-margin" v-bind:height="'15px'" v-bind:width="'15px'"/>
           {{ item.startDate }}
           <span>&nbsp;-&nbsp;</span>
@@ -55,13 +56,13 @@
   .svg-margin{
     margin: 0 0.4rem 0 0;
   }
-  .work-position,.work-dates{
+  .education-position,.education-dates{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
   }
-  .work-location{
+  .education-location{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

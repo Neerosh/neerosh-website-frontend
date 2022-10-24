@@ -52,7 +52,7 @@
     border-bottom: solid 2px;
   }
   .svg-heading{
-    margin: 0 0.3rem 0 0;
+    margin: 0 0.4rem 0 0;
   }
   
   @media (max-width: 700px){
