@@ -1,62 +1,78 @@
 :root {
   --color-error:#db0000;
   --color-warning:#d7db00;
-  --color-card-border:#009999;
-  --color-link:#00b3b3;
-  --color-link-hover:#00e6e6;
 
-  --color-background-dark:#181818;
-  --color-text-primary-dark:#eeeeee;
-  --color-text-secondary-dark:#b8b8b8;
-  --color-card-background-dark:#000000;
-  --color-navbar-background-dark:#000000;
-  --color-navbar-border-dark:#464646;
-  --color-item-background-highlight-dark:#444444;
+  --dark-color-background:#181818;
+  --dark-color-text-primary:#eeeeee;
+  --dark-color-text-secondary:#b8b8b8;
+  --dark-color-heading:#b286ff;
+  --dark-color-card-background:#000000;
+  --dark-color-navbar-background:#000000;
+  --dark-color-navbar-border:#464646;
+  --dark-color-item-background-highlight:#444444;
+  --dark-color-link:#b286ff;
+  --dark-color-link-hover:#8c4aff;
+  --dark-color-card-border:#833dfd;
 
-  --color-background-light:#f5f5f5;
-  --color-text-primary-light:#000000;
-  --color-text-secondary-light:#525252;
-  --color-card-background-light:#ffffff;
-  --color-navbar-background-light:#ffffff;
-  --color-navbar-border-light:#bbbbbb;
-  --color-item-background-highlight-light:#dddddd;
+  --light-color-background:#fafafa;
+  --light-color-text-primary:#000000;
+  --light-color-text-secondary:#525252;
+  --light-color-heading:#008eec;
+  --light-color-card-background:#ffffff;
+  --light-color-navbar-background:#ffffff;
+  --light-color-navbar-border:#bbbbbb;
+  --light-color-item-background-highlight:#dddddd;
+  --light-color-link:#008eec;
+  --light-color-link-hover:#44b4ff;
+  --light-color-card-border:#0099ff;
+
 }
 
 :root {
-  --color-button:var(--color-text-primary-light);
-  --color-button-background:var(--color-navbar-background-light);
-  --color-button-background-highlight:var(--color-item-background-highlight-light);
+  --color-button:var(--light-color-text-primary);
+  --color-button-background:var(--light-color-navbar-background);
+  --color-button-background-highlight:var(--light-color-item-background-highlight);
 
-  --color-background:var(--color-background-light);
-  --color-card-background:var(--color-card-background-light);
+  --color-background:var(--light-color-background);
+  --color-card-background:var(--light-color-card-background);
+  --color-card-border:var(--light-color-card-border);
 
-  --color-text-primary:var(--color-text-primary-light);
-  --color-text-secondary:var(--color-text-secondary-light);
+  --color-text-primary:var(--light-color-text-primary);
+  --color-text-secondary:var(--light-color-text-secondary);
+  --color-heading:var(--light-color-heading);
 
-  --color-navbar-background:var(--color-navbar-background-light);
-  --color-navbar-border:var(--color-navbar-border-light);
-  --color-navbar-item:var(--color-text-primary-light);
+  --color-navbar-background:var(--light-color-navbar-background);
+  --color-navbar-border:var(--light-color-navbar-border);
+  --color-navbar-item:var(--light-color-text-primary);
 
-  --color-item-background-highlight:var(--color-item-background-highlight-light);
+  --color-item-background-highlight:var(--light-color-item-background-highlight);
+
+  --color-link:var(--light-color-link);
+  --color-link-hover:var(--light-color-link-hover);
 }
 
 @media (prefers-color-scheme:dark) {
   :root {
-    --color-button:var(--color-text-primary-dark);
-    --color-button-background:var(--color-navbar-background-dark);
-    --color-button-background-highlight:var(--color-item-background-highlight-dark);
+    --color-button:var(--dark-color-text-primary);
+    --color-button-background:var(--dark-color-navbar-background);
+    --color-button-background-highlight:var(--dark-color-item-background-highlight);
 
-    --color-background:var(--color-background-dark);
-    --color-card-background:var(--color-card-background-dark);
+    --color-background:var(--dark-color-background);
+    --color-card-background:var(--dark-color-card-background);
+    --color-card-border:var(--dark-color-card-border);
 
-    --color-text-primary:var(--color-text-primary-dark);
-    --color-text-secondary:var(--color-text-secondary-dark);
+    --color-text-primary:var(--dark-color-text-primary);
+    --color-text-secondary:var(--dark-color-text-secondary);
+    --color-heading:var(--dark-color-heading);
 
-    --color-navbar-background:var(--color-navbar-background-dark);
-    --color-navbar-border:var(--color-navbar-border-dark);
-    --color-navbar-item:var(--color-text-primary-dark);
+    --color-navbar-background:var(--dark-color-navbar-background);
+    --color-navbar-border:var(--dark-color-navbar-border);
+    --color-navbar-item:var(--dark-color-text-primary);
 
-    --color-item-background-highlight:var(--color-item-background-highlight-dark);
+    --color-item-background-highlight:var(--dark-color-item-background-highlight);
+
+    --color-link:var(--dark-color-link);
+    --color-link-hover:var(--dark-color-link-hover);
   }
 }
 

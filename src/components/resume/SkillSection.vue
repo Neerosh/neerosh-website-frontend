@@ -4,7 +4,7 @@
   import SkillsIcon from '../icons/resume/SkillsIcon.vue';
   import DynamicDevList from '../DynamicDevList.vue';
   import DynamicDevCard from '../DynamicDevCard.vue';
-  import SkillService from '../../services/SkillService';
+  import SkillService from '../../services/UserSkillService';
 
   function changeSkillCardParent(name){
     index.value = skillsList.findIndex((element) => element.name == name)
@@ -31,7 +31,7 @@
       CodeIcon,ToolsIcon,SkillsIcon,DynamicDevList,DynamicDevCard
     },
     async created(){
-      this.skillsList = await SkillService.getSkills();
+      this.skillsList = await SkillService.getUserSkills("6359bbec73c2685741589a0f");
     },
     methods:{
       changeSkillCardParent(_id){
@@ -88,7 +88,7 @@
   }
   .basic-info{
     margin: 1rem 0;
-    color: var(--color-link);
+    color: var(--color-heading);
   }
   .developer{
     display: flex;
@@ -103,7 +103,7 @@
     align-items: center;
 
     margin: 0.5rem 0;
-    color: var(--color-link);
+    color: var(--color-heading);
     font-weight: 600;
     border-bottom: solid 2px;
   }
@@ -114,7 +114,7 @@
     align-items: center;
 
     margin: 0.5rem 0;
-    color: var(--color-link);
+    color: var(--color-heading);
     font-weight: 600;
   }
   .svg-heading{

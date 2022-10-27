@@ -1,45 +1,48 @@
 <script>
   import IntroductionIcon from '../icons/resume/IntroductionIcon.vue';
   import DeveloperIcon from '../icons/resume/DeveloperIcon.vue';
-  import ProfileService from '../../services/ProfileService.js';
-
+  import UserService from '../../services/UserService.js';
+  import UserBasicService from '../../services/UserBasicService.js';
   export default {
     name: 'IntroductionSection',
     data() {
       return {
         headingIconHeight: '30px',
         headingIconWidth: '30px',
-        profile: Object
+        user: Object,
+        userBasic: Object
       }
     },
     components:{ 
       DeveloperIcon,IntroductionIcon
     },
     async created(){
-      this.profile = await ProfileService.getProfile("63557372954d77adbf584221");
+      this.user = await UserService.getUser("6359bbec73c2685741589a0f");
+      const userBasic = await UserBasicService.getUserBasic("6359bbec73c2685741589a0f","English");
+      this.userBasic = userBasic[0]
     }
   }
 </script>
 
 <template>
   <section name="Basic-Information" class="basic-info">
-    <h1>{{ profile.fullname }}</h1>
+    <h1>{{ user.fullname }}</h1>
     <h2 class="developer">
-      <DeveloperIcon class="svg-heading" v-bind:height="'25px'" v-bind:width="'25px'"/>{{ profile.occupation }}
+      <DeveloperIcon class="svg-heading" v-bind:height="'25px'" v-bind:width="'25px'"/>{{ userBasic.title }}
     </h2>
   </section>
   <section name="Introduction">
     <h2 class="resume-section-heading">
       <IntroductionIcon class="svg-heading" v-bind:height="headingIconHeight" v-bind:width="headingIconWidth"/> Introduction
     </h2>
-    <p class="resume-section-paragraph"> {{ profile.introduction }} </p>
+    <p class="resume-section-paragraph"> {{ userBasic.introduction }} </p>
   </section>
 </template>
 
 <style scoped>
   .basic-info{
     margin: 1rem 0;
-    color: var(--color-link);
+    color: var(--color-heading);
   }
   .developer{
     display: flex;
@@ -54,7 +57,7 @@
     align-items: center;
 
     margin: 0.5rem 0;
-    color: var(--color-link);
+    color: var(--color-heading);
     font-weight: 600;
     border-bottom: solid 2px;
   }

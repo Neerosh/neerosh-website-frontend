@@ -1,7 +1,7 @@
 <script>
   import ExperienceIcon from '../icons/resume/ExperienceIcon.vue';
   import ExperienceCard from './ExperienceCard.vue';
-  import ExperienceService from '../../services/ExperienceService';
+  import UserExperienceService from '../../services/UserExperienceService';
   export default {
     name: 'ExperienceSection',
     data() {
@@ -15,7 +15,7 @@
       ExperienceIcon,ExperienceCard
     },
     async created(){
-      this.experiencesList = await ExperienceService.getExperiences();
+      this.experiencesList = await UserExperienceService.getUserExperiences("6359bbec73c2685741589a0f");
 
       const optionsDate= { year:"numeric", month:"2-digit", day:"2-digit", timeZone: 'UTC'};
 
@@ -47,7 +47,7 @@
     align-items: center;
 
     margin: 0.5rem 0;
-    color: var(--color-link);
+    color: var(--color-heading);
     font-weight: 600;
     border-bottom: solid 2px;
   }

@@ -66,7 +66,7 @@
   .info-tag{
     font-size: 13px;
     padding: 0.3rem 0.6rem;
-    background-color: var(--color-card-border);
+    background-color: var(--color-link-hover);
     border-radius: 15px;
     margin: 0.4rem 0.4rem 0 0;
   }

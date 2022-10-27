@@ -12,15 +12,15 @@
   <div class="card">
     <div class="card-body">
       <h3 class="work-position">
-        <WorkPositionIcon class="svg-margin" v-bind:height="'20px'" v-bind:width="'20px'" />
-        {{ item.name }}</h3>
+        <WorkPositionIcon class="svg-margin-header"/>
+        {{ item.occupation }}</h3>
       <div class="flex-row">
         <h4 class="work-location">
-          <LocationIcon class="svg-margin" v-bind:height="'15px'" v-bind:width="'15px'" />
-          {{ item.location }}
+          <LocationIcon class="svg-margin-subheader"/>
+          {{ item.company }}
         </h4>
         <h4 class="work-dates">
-          <CalendarIcon class="svg-margin" v-bind:height="'15px'" v-bind:width="'15px'"/>
+          <CalendarIcon class="svg-margin-subheader"/>
           {{ item.startDate }}
           <span>&nbsp;-&nbsp;</span>
           <span v-if="item.endDate !== null">{{ item.endDate }}</span>
@@ -50,10 +50,22 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 0.3rem;
-    row-gap: 0.2rem;
+    row-gap: 0.5rem;
   }
-  .svg-margin{
+  .svg-margin, .svg-margin-header, .svg-margin-subheader{
     margin: 0 0.4rem 0 0;
+  }
+  .svg-margin-header{
+    min-height: 25px;
+    min-width: 25px;
+    height: 25px;
+    width: 25px;
+  }
+  .svg-margin-subheader{
+    min-height: 20px;
+    min-width: 20px;
+    height: 20px;
+    width: 20px;
   }
   .work-position,.work-dates{
     display: flex;

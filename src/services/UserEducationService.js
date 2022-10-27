@@ -1,13 +1,17 @@
 import axios from "axios";
 
-const url = "api/resume/educations";
+const url = "api/resume/user/educations";
 
-class EducationService {
+class UserEducationService {
   //GET posts
-  static getEducations(){
+  static getUserEducations(userId){
     return new Promise(async (resolve, reject) => {
       try {
-        const res = await axios.get(url);
+        const res = await axios.get(url,{
+          params:{
+            userId:String(userId)
+          }
+        });
         const data = res.data;
         resolve(
           data.map(education => ({
@@ -23,4 +27,4 @@ class EducationService {
 
 }
 
-export default EducationService;
+export default UserEducationService;

@@ -1,15 +1,15 @@
 import axios from "axios";
 
-const url = "api/resume/profile";
+const url = "api/resume/user";
 
-class ProfileService {
+class UserService {
   //GET posts
-  static getProfile(id){
+  static getUser(id){
     return new Promise(async (resolve, reject) => {
       try {
         const res = await axios.get(url,{
           params:{
-            ID:String(id)
+            id:String(id)
           }
         });
         resolve(res.data);
@@ -21,4 +21,4 @@ class ProfileService {
 
 }
 
-export default ProfileService;
+export default UserService;

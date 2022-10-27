@@ -1,13 +1,17 @@
 import axios from "axios";
 
-const url = "api/resume/skills";
+const url = "api/resume/user/skills";
 
-class SkillService {
+class UserSkillService {
   //GET posts
-  static getSkills(){
+  static getUserSkills(userId){
     return new Promise(async (resolve, reject) => {
       try {
-        const res = await axios.get(url);
+        const res = await axios.get(url,{
+          params:{
+            userId:String(userId)
+          }
+        });
         const data = res.data;
         resolve(
           data.map(skill => ({
@@ -21,4 +25,4 @@ class SkillService {
   }
 }
 
-export default SkillService;
+export default UserSkillService;

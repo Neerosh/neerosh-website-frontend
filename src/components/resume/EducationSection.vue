@@ -1,7 +1,7 @@
 <script>
   import EducationIcon from '../icons/resume/EducationIcon.vue';
   import EducationCard from './EducationCard.vue';
-  import EducationService from '../../services/EducationService.js';
+  import UserEducationService from '../../services/UserEducationService';
   export default {
     name: 'EducationSection',
     data() {
@@ -15,7 +15,7 @@
       EducationIcon,EducationCard
     },
     async created(){
-      this.educationList = await EducationService.getEducations();
+      this.educationList = await UserEducationService.getUserEducations("6359bbec73c2685741589a0f");
 
       const optionsDate= { year:"numeric", month:"2-digit", day:"2-digit", timeZone: 'UTC'};
 
@@ -47,7 +47,7 @@
     align-items: center;
 
     margin: 0.5rem 0;
-    color: var(--color-link);
+    color: var(--color-heading);
     font-weight: 600;
     border-bottom: solid 2px;
   }

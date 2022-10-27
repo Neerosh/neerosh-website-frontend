@@ -1,5 +1,4 @@
 <script setup>
-  import { ref } from 'vue'
   import IntroductionSection from '../components/resume/IntroductionSection.vue';
   import EducationSection from '../components/resume/EducationSection.vue';
   import ExperienceSection from '../components/resume/ExperienceSection.vue';
