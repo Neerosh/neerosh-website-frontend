@@ -1,5 +1,5 @@
 <script setup>
-  import DynamicDevIcon from './DynamicDevIcon.vue';
+  import DynamicDevIcon from '../DynamicDevIcon.vue';
 
   const props = defineProps({
     item: Object,

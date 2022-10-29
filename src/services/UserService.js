@@ -4,12 +4,13 @@ const url = "api/resume/user";
 
 class UserService {
   //GET posts
-  static getUser(id){
+  static getUser(id,language){
     return new Promise(async (resolve, reject) => {
       try {
         const res = await axios.get(url,{
           params:{
-            id:String(id)
+            id:String(id),
+            language:String(language)
           }
         });
         resolve(res.data);

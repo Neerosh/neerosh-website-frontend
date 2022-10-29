@@ -4,12 +4,13 @@ const url = "api/resume/user/skills";
 
 class UserSkillService {
   //GET posts
-  static getUserSkills(userId){
+  static getUserSkills(userId,language){
     return new Promise(async (resolve, reject) => {
       try {
         const res = await axios.get(url,{
           params:{
-            userId:String(userId)
+            userId:String(userId),
+            language:String(language)
           }
         });
         const data = res.data;

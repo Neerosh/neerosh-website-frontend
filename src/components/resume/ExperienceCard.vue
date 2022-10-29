@@ -1,6 +1,6 @@
 <script setup>
-  import LocationIcon from '../icons/resume/LocationIcon.vue'
-  import WorkPositionIcon from '../icons/resume/WorkPositionIcon.vue'
+  import LocationIcon from '../icons/LocationIcon.vue'
+  import ExperienceItemIcon from '../icons/resume/ExperienceItemIcon.vue'
   import CalendarIcon from '../icons/CalendarIcon.vue'
   const props = defineProps({
     item: Object,
@@ -12,7 +12,7 @@
   <div class="card">
     <div class="card-body">
       <h3 class="work-position">
-        <WorkPositionIcon class="svg-margin-header"/>
+        <ExperienceItemIcon class="svg-margin-header"/>
         {{ item.occupation }}</h3>
       <div class="flex-row">
         <h4 class="work-location">

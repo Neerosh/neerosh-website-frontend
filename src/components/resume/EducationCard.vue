@@ -1,20 +1,17 @@
 <script setup>
-  import LocationIcon from '../icons/resume/LocationIcon.vue'
+  import LocationIcon from '../icons/LocationIcon.vue'
   import CalendarIcon from '../icons/CalendarIcon.vue'
-  import GraduationIcon from '../icons/resume/GraduationIcon.vue';
+  import EducationItemIcon from '../icons/resume/EducationItemIcon.vue';
   const props = defineProps({
     item: Object,
   })
-
-  const headerHeightWidth = '20px'
-  const subheaderHeightWidth = '15px'
 </script>
 
 <template>
   <div class="card">
     <div class="card-body">
       <h3 class="education-position">
-        <GraduationIcon class="svg-margin-header"/>
+        <EducationItemIcon class="svg-margin-header"/>
         {{ item.courseName }}
       </h3>
       <div class="flex-row">

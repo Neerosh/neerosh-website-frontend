@@ -4,21 +4,31 @@ const url = "api/resume/user/experiences";
 
 class UserExperienceService {
   //GET posts
-  static getUserExperiences(userId){
+  static getUserExperiences(userId,language){
     return new Promise(async (resolve, reject) => {
       try {
         const res = await axios.get(url,{
           params:{
-            userId:String(userId)
+            userId:String(userId),
+            language:String(language)
           }
         });
-        const data = res.data;
-        resolve(
-          data.map(experience => ({
-            ...experience
-          }))
-        );
+        var optionsDate= { year:"numeric", month:"2-digit", timeZone: 'UTC'};
+        const data = res.data.map(experience => ({
+          ...experience
+        }));
 
+        data.forEach(item => {
+          if (item.startDate !== null){
+            console.log(item.startDate)
+            item.startDate = new Date(item.startDate).toLocaleDateString('en-US', optionsDate);
+          }
+          if (item.endDate !== null){
+            console.log(item.endDate)
+            item.endDate = new Date(item.endDate).toLocaleDateString('en-US', optionsDate);
+          }
+        });
+        resolve(data);
       } catch (err){
         reject(err);
       }
