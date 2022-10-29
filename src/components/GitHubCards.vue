@@ -35,6 +35,11 @@
 				this.searchResult = 'Success'
 			}
 		},
+		watch: {
+			"username": function(val, oldVal) {
+				this.RunSearch()
+			}
+		},
 		async created(){
 			if (this.executeWhenCreated){
 				this.RunSearch()
