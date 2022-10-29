@@ -104,7 +104,7 @@
       <span v-if="resumeLanguage == 'English'">Education</span>
       <span v-if="resumeLanguage == 'Portuguese'">Educação</span>
     </h2>
-    <EducationCard v-for="education in educationList" v-bind:item="education" />
+    <EducationCard v-for="education in educationList" v-bind:item="education" v-bind:language="resumeLanguage"/>
   </section>
   <section name="Experience">
     <h2 class="resume-section-heading">
@@ -112,7 +112,7 @@
       <span v-if="resumeLanguage == 'English'">Experience</span>
       <span v-if="resumeLanguage == 'Portuguese'">Experiências</span>
     </h2>
-    <ExperienceCard v-for="experience in experiencesList" v-bind:item="experience" />
+    <ExperienceCard v-for="experience in experiencesList" v-bind:item="experience" v-bind:language="resumeLanguage"/>
   </section>
   <section name="Skills">
     <h2 class="resume-section-heading">
@@ -229,10 +229,11 @@
     flex-direction: row;
     flex-wrap: wrap;
     padding: 0.5rem 0 ;
+    row-gap: 0.5rem;
   }
 
-  .flex-bar-buttons-skills > button{
-    margin-right: 0.5rem;
+  .flex-bar-buttons-skills{
+    column-gap: 0.5rem;
   }
 
   .language-button-left{

@@ -20,11 +20,9 @@ class UserExperienceService {
 
         data.forEach(item => {
           if (item.startDate !== null){
-            console.log(item.startDate)
             item.startDate = new Date(item.startDate).toLocaleDateString('en-US', optionsDate);
           }
           if (item.endDate !== null){
-            console.log(item.endDate)
             item.endDate = new Date(item.endDate).toLocaleDateString('en-US', optionsDate);
           }
         });

@@ -4,6 +4,7 @@
   import EducationItemIcon from '../icons/resume/EducationItemIcon.vue';
   const props = defineProps({
     item: Object,
+    language: String
   })
 </script>
 
@@ -24,7 +25,10 @@
           {{ item.startDate }}
           <span>&nbsp;-&nbsp;</span>
           <span v-if="item.endDate !== null">{{ item.endDate }}</span>
-          <span v-else>Now</span>
+          <span v-else>
+            <span v-if="language == 'English'">Now</span>
+            <span v-if="language == 'Portuguese'">Presente</span>
+          </span>
         </h4>
       </div>
       <p class="description">{{ item.description }}</p>
@@ -51,6 +55,7 @@
     align-items: center;
     margin-top: 0.3rem;
     row-gap: 0.5rem;
+    column-gap: 0.5rem;
   }
   .svg-margin, .svg-margin-header, .svg-margin-subheader{
     margin: 0 0.4rem 0 0;
@@ -78,7 +83,6 @@
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    margin-right: 0.3rem;
   }
   .description{
     margin: 0.3rem 0 0 0;
