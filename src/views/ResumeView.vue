@@ -85,9 +85,9 @@
     <button class="language-button-right" @click="changeLanguageSelected($event,'Portuguese')">Portuguese</button>
   </div>
   <section name="Basic-Information" class="basic-info">
-    <h1>{{ user.fullname }}</h1>
-    <h2 class="developer">
-      <DeveloperIcon class="svg-heading" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth"/>{{ userBasic.title }}
+    <h1 class="basic-info-heading">{{ user.fullname }}</h1>
+    <h2 class="developer basic-info-heading">
+      <DeveloperIcon class="svg-basicinfo" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth"/>{{ userBasic.title }}
     </h2>
   </section>
   <section name="Introduction">
@@ -168,6 +168,10 @@
     color: var(--color-heading);
   }
 
+  .basic-info-heading{
+    font-weight: 600;
+    color: var(--color-heading);
+  }
   .developer{
     display: flex;
     flex-direction: row;
@@ -202,16 +206,20 @@
     font-weight: 600;
   }
 
-  .svg-heading{
+  .svg-heading,.svg-subheading,.svg-basicinfo{
     margin: 0 0.3rem 0 0;
     min-height: 30px;
     min-width: 30px;
   }
 
   .svg-subheading{
-    margin: 0 0.3rem 0 0;
     min-height: 20px;
     min-width: 20px;
+  }
+
+  .svg-basicinfo{
+    min-height: 25px;
+    min-width: 25px;
   }
 
   .resume-section-paragraph{
@@ -230,6 +238,9 @@
     flex-wrap: wrap;
     padding: 0.5rem 0 ;
     row-gap: 0.5rem;
+  }
+  .flex-bar-buttons-languages{
+    justify-content: flex-end;
   }
 
   .flex-bar-buttons-skills{
