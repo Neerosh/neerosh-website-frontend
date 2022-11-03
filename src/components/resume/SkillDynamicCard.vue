@@ -61,13 +61,14 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    column-gap: 0.4rem;
+    row-gap: 0.4rem;
     margin: 0.5rem 0 0 0;
   }
   .info-tag{
     font-size: 13px;
-    padding: 0.3rem 0.6rem;
+    padding: 0.2rem 0.6rem;
     background-color: var(--color-link-hover);
     border-radius: 15px;
-    margin: 0.4rem 0.4rem 0 0;
   }
 </style>

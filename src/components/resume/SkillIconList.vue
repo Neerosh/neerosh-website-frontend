@@ -5,8 +5,7 @@
     item: Object,
     itemType: String,
     iconHeight: String,
-    iconWidth: String,
-    showName: Boolean
+    iconWidth: String
   })
 
   const emit = defineEmits(["changeSkillCardChild"])
@@ -22,7 +21,7 @@
     <div class="dev-icon" v-on:click="changeSkillCardChild">
       <DynamicDevIcon v-bind:iconName="item.name" v-bind:iconHeight="iconHeight" v-bind:iconWidth="iconWidth" />
     </div>
-    <p v-if="showName == true" class="item-text">{{ item.name }}</p>
+    <p class="item-text">{{ item.name }}</p>
   </div>
 </template>
 <style scoped>

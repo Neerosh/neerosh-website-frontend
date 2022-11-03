@@ -18,7 +18,7 @@
       <div class="flex-row">
         <h4 class="education-location">
           <LocationIcon class="svg-margin-subheader"/>
-          {{ item.institution }}
+          {{ item.institution }}, {{ item.city }} - {{ item.state}}
         </h4>
         <h4 class="education-dates">
           <CalendarIcon class="svg-margin-subheader"/>

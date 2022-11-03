@@ -18,7 +18,7 @@
       <div class="flex-row">
         <h4 class="work-location">
           <LocationIcon class="svg-margin-subheader"/>
-          {{ item.company }}
+          {{ item.company }}, {{ item.city }} - {{ item.state}}
         </h4>
         <h4 class="work-dates">
           <CalendarIcon class="svg-margin-subheader"/>

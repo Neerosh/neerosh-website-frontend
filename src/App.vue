@@ -36,7 +36,7 @@
 
 <template>
   <header>
-    <div class="wrapper">
+    <div>
       <nav class="navbar">
         <div class="navbar-toggle" @click="loadMenuMobile()">
           <BarIcon class="svg-navitem-mobile" v-bind:height="navIconHeight" v-bind:width="navIconWidth" />
@@ -79,7 +79,7 @@
     align-items: center;
     column-gap: 0.3rem;
     row-gap: 0.3rem;
-    padding: 0.5rem;
+    padding: 0.5rem 1.5rem;
     background-color: var(--color-navbar-background);
     border-bottom: solid 2px var(--color-navbar-border);
   }
@@ -145,7 +145,7 @@
     margin-left: auto;
     margin-right: auto;
     max-width: 1440px;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
   }
 
   @media (max-width: 700px){
@@ -173,6 +173,7 @@
       flex-direction: column;
       align-items: end;
     }
+
   }
 
 </style>

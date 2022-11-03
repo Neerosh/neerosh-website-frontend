@@ -2,16 +2,19 @@
   import CodeIcon from '../components/icons/CodeIcon.vue';
   import DeveloperIcon from '../components/icons/resume/DeveloperIcon.vue';
   import EducationIcon from '../components/icons/resume/EducationIcon.vue';
+  import EmailIcon from '../components/icons/EmailICon.vue';
   import ExperienceIcon from '../components/icons/resume/ExperienceIcon.vue';
   import IntroductionIcon from '../components/icons/resume/IntroductionIcon.vue';
+  import PhoneIcon from '../components/icons/PhoneIcon.vue';
   import TranslateIcon from '../components/icons/TranslateIcon.vue';
   import ToolsIcon from '../components/icons/ToolsIcon.vue';
   import SkillsIcon from '../components/icons/resume/SkillsIcon.vue';
+  import WebsiteIcon from '../components/icons/WebsiteIcon.vue';
 
   import EducationCard from '../components/resume/EducationCard.vue';
   import ExperienceCard from '../components/resume/ExperienceCard.vue';
-  import SkillCard from '../components/resume/SkillCard.vue';
-  import SkillList from '../components/resume/SkillList.vue';
+  import SkillDynamicCard from '../components/resume/SkillDynamicCard.vue';
+  import SkillIconList from '../components/resume/SkillIconList.vue';
 
   import UserInfoService from '../services/UserInfoService.js';
   import UserEducationService from '../services/UserEducationService.js';
@@ -34,20 +37,20 @@
         devIconHeight: '50px',
         devIconWidth: '50px',
         devIconShowName: false,
-        skillCardShow: false,
+        skillDynamicCardShow: false,
         skillIndex: 0,
         resumeLanguage: 'English'
       }
     },
     components:{ 
-      CodeIcon,DeveloperIcon,EducationIcon,ExperienceIcon,IntroductionIcon,TranslateIcon,ToolsIcon,SkillsIcon,
-      EducationCard,ExperienceCard,SkillCard,SkillList
+      CodeIcon,DeveloperIcon,EducationIcon,EmailIcon,ExperienceIcon,IntroductionIcon,PhoneIcon,TranslateIcon,ToolsIcon,SkillsIcon,WebsiteIcon,
+      EducationCard,ExperienceCard,SkillDynamicCard,SkillIconList
     },
     methods:{
       changeSkillCardParent(_id){
         this.skillIndex = this.skillsList.findIndex((element) => element._id == _id)
         //console.log(skillsList[index])
-        this.skillCardShow = true
+        this.skillDynamicCardShow = true
       },
       changeLanguageSelected(event,language){
         var selectedButton = document.getElementsByClassName("language-button-selected");
@@ -89,6 +92,32 @@
     <h2 class="developer basic-info-heading">
       <DeveloperIcon class="svg-basicinfo" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth"/>{{ userInfo.title }}
     </h2>
+    <div class="flex-row-info">
+      <div name="Phones" class="flex-row-info-type">
+        <h3 class="flex-row-info-item" v-for="phone in user.phone">
+          <PhoneIcon class="svg-heading" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth"/>
+          <p class="info-item">
+            {{ phone }}
+          </p>
+        </h3>
+      </div>
+      <div name="Emails" class="flex-row-info-type">
+        <h3 class="flex-row-info-item" v-for="email in user.email">
+          <EmailIcon class="svg-heading" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth"/>
+          <a class="link" v-bind:href="email" target="_blank">
+            {{ email }}
+          </a>
+        </h3>
+      </div>
+      <div name="Websites" class="flex-row-info-type">
+        <h3 class="flex-row-info-item" v-for="website in user.website">
+          <WebsiteIcon class="svg-heading" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth"/>
+          <a class="link" v-bind:href="'https://'+website" target="_blank">
+            {{ website }}
+          </a>
+        </h3>
+      </div>
+    </div>
   </section>
   <section name="Introduction">
     <h2 class="resume-section-heading">
@@ -121,28 +150,23 @@
       <span v-if="resumeLanguage == 'Portuguese'">Habilidades</span>
     </h2>
     <div class="flex-bar-buttons-skills">
-      <button  @click="devIconShowName = !devIconShowName">
-        <span v-if="resumeLanguage == 'English'">Show/Hide Names</span>
-        <span v-if="resumeLanguage == 'Portuguese'">Mostrar/Esconder Nomes</span>
-      </button>
-      <button  @click="skillCardShow = !skillCardShow">
+      <button  @click="skillDynamicCardShow = !skillDynamicCardShow">
         <span v-if="resumeLanguage == 'English'">Show/Hide Details</span>
         <span v-if="resumeLanguage == 'Portuguese'">Mostrar/Esconder Detalhes</span>
       </button>
     </div>
-    <SkillCard v-if="skillCardShow" v-bind:item="skillsList[skillIndex]" />
+    <SkillDynamicCard v-if="skillDynamicCardShow" v-bind:item="skillsList[skillIndex]" />
     <h3 class="resume-section-sub-heading">
-      <CodeIcon class="svg-heading" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth" />
+      <CodeIcon class="svg-subheading" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth" />
       <span v-if="resumeLanguage == 'English'">Programming Languages</span>
       <span v-if="resumeLanguage == 'Portuguese'">Linguagens de Programação</span>
     </h3>
-    <div class="skill-icons">
-      <SkillList v-for="item in skillsList"
+    <div class="skill-flex-icons">
+      <SkillIconList v-for="item in skillsList"
         v-bind:item="item"
         v-bind:itemType="'Language'" 
         v-bind:iconHeight="devIconHeight" 
         v-bind:iconWidth="devIconWidth"
-        v-bind:showName="devIconShowName"
         v-on:changeSkillCardChild="changeSkillCardParent"/>
     </div>
     <h3 class="resume-section-sub-heading">
@@ -150,13 +174,12 @@
       <span v-if="resumeLanguage == 'English'">Tools</span>
       <span v-if="resumeLanguage == 'Portuguese'">Ferramentas</span>
     </h3>
-    <div class="skill-icons">
-      <SkillList v-for="item in skillsList"
+    <div class="skill-flex-icons">
+      <SkillIconList v-for="item in skillsList"
         v-bind:item="item"
         v-bind:itemType="'Tool'" 
         v-bind:iconeight="devIconHeight" 
         v-bind:iconWidth="devIconWidth"
-        v-bind:showName="devIconShowName"
         v-on:changeSkillCardChild="changeSkillCardParent"/>
     </div>   
   </section>
@@ -191,18 +214,40 @@
     border-bottom: solid 2px;
   }
 
-  .flex-row-basic{
+  .flex-row-info{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-content: center;
+    justify-content: space-between;
+    column-gap: 0.3rem;
+    row-gap: 0.3rem;
+    margin: 0.5rem 0 0 0;
+    color: var(--color-text-primary);
   }
 
-  .basic-list{
+  .flex-row-info-item, .flex-row-info-type{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+
+  .flex-row-info-item{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .link,.info-item{
     color: var(--color-text-primary);
-    list-style: none;
-    margin: 0;
-    padding: 0 0.5rem;
+    text-decoration: none;
+    padding: 0.3rem 0.2rem;
+  }
+  .link:hover{
+    background-color: var(--color-button-background-highlight);
+    border-radius: 8px;
   }
 
   .resume-section-sub-heading{
@@ -240,7 +285,7 @@
     padding: 0.5rem 0 0 0.5rem;
   }
 
-  .skill-icons{
+  .skill-flex-icons{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -284,7 +329,7 @@
       text-align: center;
     }
 
-    .skill-icons, .flex-bar-buttons-skills{
+    .skill-flex-icons, .flex-bar-buttons-skills{
       justify-content: center;
     }
   }
