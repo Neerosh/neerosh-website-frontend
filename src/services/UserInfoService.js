@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const url = "api/resume/user/basic";
+const url = "api/resume/user/info";
 
-class UserBasicService {
+class UserInfoService {
   //GET posts
-  static getUserBasic(id,language){
+  static getUserInfo(id,language){
     return new Promise(async (resolve, reject) => {
       try {
         const res = await axios.get(url,{
@@ -22,4 +22,4 @@ class UserBasicService {
 
 }
 
-export default UserBasicService;
+export default UserInfoService;

@@ -13,7 +13,7 @@
   import SkillCard from '../components/resume/SkillCard.vue';
   import SkillList from '../components/resume/SkillList.vue';
 
-  import UserBasicService from '../services/UserBasicService.js';
+  import UserInfoService from '../services/UserInfoService.js';
   import UserEducationService from '../services/UserEducationService.js';
   import UserExperienceService from '../services/UserExperienceService.js';
   import UserSkillService from '../services/UserSkillService.js';
@@ -23,7 +23,7 @@
     data() {
       return {
         user: Object,
-        userBasic: Object,
+        userInfo: Object,
         experiencesList: [],
         educationList: [],
         skillsList: [],
@@ -60,7 +60,7 @@
       },
       async RequestResumeInfo(userId,language){
         this.user = await UserService.getUser(userId,language);
-        this.userBasic = await UserBasicService.getUserBasic(userId,language);
+        this.userInfo = await UserInfoService.getUserInfo(userId,language);
         this.educationList = await UserEducationService.getUserEducations(userId,language);
         this.experiencesList = await UserExperienceService.getUserExperiences(userId,language);
         this.skillsList = await UserSkillService.getUserSkills(userId,language);
@@ -87,7 +87,7 @@
   <section name="Basic-Information" class="basic-info">
     <h1 class="basic-info-heading">{{ user.fullname }}</h1>
     <h2 class="developer basic-info-heading">
-      <DeveloperIcon class="svg-basicinfo" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth"/>{{ userBasic.title }}
+      <DeveloperIcon class="svg-basicinfo" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth"/>{{ userInfo.title }}
     </h2>
   </section>
   <section name="Introduction">
@@ -96,7 +96,7 @@
       <span v-if="resumeLanguage == 'English'">Introduction</span>
       <span v-if="resumeLanguage == 'Portuguese'">Introdução</span>
     </h2>
-    <p class="resume-section-paragraph"> {{ userBasic.introduction }} </p>
+    <p class="resume-section-paragraph"> {{ userInfo.introduction }} </p>
   </section>
   <section name="Education">
     <h2 class="resume-section-heading">
@@ -191,6 +191,20 @@
     border-bottom: solid 2px;
   }
 
+  .flex-row-basic{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .basic-list{
+    color: var(--color-text-primary);
+    list-style: none;
+    margin: 0;
+    padding: 0 0.5rem;
+  }
+
   .resume-section-sub-heading{
     display: flex;
     flex-direction: row;
@@ -198,7 +212,7 @@
     align-items: center;
 
     margin: 0.5rem 0;
-    color: var(--color-link);
+    color: var(--color-heading);
     font-weight: 600;
   }
 
