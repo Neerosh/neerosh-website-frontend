@@ -104,7 +104,7 @@
       <div name="Emails" class="flex-row-info-type">
         <h3 class="flex-row-info-item" v-for="email in user.email">
           <EmailIcon class="svg-heading" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth"/>
-          <a class="link" v-bind:href="email" target="_blank">
+          <a class="link" v-bind:href="'mailto:'+email" target="_blank">
             {{ email }}
           </a>
         </h3>

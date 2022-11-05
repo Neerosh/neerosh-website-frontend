@@ -79,7 +79,7 @@
     align-items: center;
     column-gap: 0.3rem;
     row-gap: 0.3rem;
-    padding: 0.5rem 1.5rem;
+    padding: 0.5rem 1rem;
     background-color: var(--color-navbar-background);
     border-bottom: solid 2px var(--color-navbar-border);
   }
@@ -109,7 +109,7 @@
   .navbar-item, .navbar-toggle{
     display: flex;
     align-items: center;
-    padding: 0.4rem 0.4rem;
+    padding: 0.4rem;
     row-gap: 0.3rem;
     color: var(--color-navbar-item);
     text-decoration: none;
@@ -145,7 +145,7 @@
     margin-left: auto;
     margin-right: auto;
     max-width: 1440px;
-    padding: 1rem 1.5rem;
+    padding: 1rem;
   }
 
   @media (max-width: 700px){
@@ -172,6 +172,11 @@
     .navbar{
       flex-direction: column;
       align-items: end;
+      padding: 0.5rem;
+    }
+
+    main{
+      padding: 1rem .7rem;
     }
 
   }
