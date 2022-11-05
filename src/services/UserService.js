@@ -3,7 +3,7 @@ import axios from "axios";
 const url = "api/resume/user";
 
 class UserService {
-  //GET posts
+  //GET
   static getUser(id,language){
     return new Promise(async (resolve, reject) => {
       try {

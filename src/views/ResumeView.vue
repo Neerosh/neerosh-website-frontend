@@ -178,7 +178,7 @@
       <SkillIconList v-for="item in skillsList"
         v-bind:item="item"
         v-bind:itemType="'Tool'" 
-        v-bind:iconeight="devIconHeight" 
+        v-bind:iconHeight="devIconHeight" 
         v-bind:iconWidth="devIconWidth"
         v-on:changeSkillCardChild="changeSkillCardParent"/>
     </div>   

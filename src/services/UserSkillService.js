@@ -3,7 +3,7 @@ import axios from "axios";
 const url = "api/resume/user/skills";
 
 class UserSkillService {
-  //GET posts
+  //GET
   static getUserSkills(userId,language){
     return new Promise(async (resolve, reject) => {
       try {

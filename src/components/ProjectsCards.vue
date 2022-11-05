@@ -11,9 +11,9 @@
   <template>
     <div class="projects-list">
       <div class="card" v-for="project in projects">
-        <img v-bind:src="project.image">
+        <img v-bind:src="project.imagePath">
         <div class="card-content">
-          <RouterLink class="title-link" v-bind:to="project.url">
+          <RouterLink class="title-link" v-bind:to="project.urlPath">
             {{ project.name }}
           </RouterLink>
           <p>{{ project.description }}</p>

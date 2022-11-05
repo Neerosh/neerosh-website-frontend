@@ -21,7 +21,6 @@
     <div class="dev-icon" v-on:click="changeSkillCardChild">
       <DynamicDevIcon v-bind:iconName="item.name" v-bind:iconHeight="iconHeight" v-bind:iconWidth="iconWidth" />
     </div>
-    <p class="item-text">{{ item.name }}</p>
   </div>
 </template>
 <style scoped>
@@ -41,8 +40,5 @@
   .dev-icon:hover{
     background-color: var(--color-item-background-highlight);
     cursor: pointer;
-  }
-  .item-text{
-    font-size: 13px;
   }
 </style>
