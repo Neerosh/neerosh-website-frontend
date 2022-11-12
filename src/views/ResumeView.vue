@@ -10,9 +10,9 @@
   import ToolsIcon from '../components/icons/ToolsIcon.vue';
   import SkillsIcon from '../components/icons/resume/SkillsIcon.vue';
   import WebsiteIcon from '../components/icons/WebsiteIcon.vue';
+  import VisibilityIcon from '../components/icons/VisibilityIcon.vue';
 
-  import EducationCard from '../components/resume/EducationCard.vue';
-  import ExperienceCard from '../components/resume/ExperienceCard.vue';
+  import ResumeCard from '../components/resume/ResumeCard.vue';
   import SkillDynamicCard from '../components/resume/SkillDynamicCard.vue';
   import SkillIconList from '../components/resume/SkillIconList.vue';
 
@@ -30,21 +30,18 @@
         experiencesList: [],
         educationList: [],
         skillsList: [],
-        subHeadingIconHeight: '20px',
-        subHeadingIconWidth: '20px',
-        headingIconHeight: '30px',
-        headingIconWidth: '30px',
-        devIconHeight: '50px',
-        devIconWidth: '50px',
-        devIconShowName: false,
-        skillDynamicCardShow: false,
+        devIconHeight: '65px',
+        devIconWidth: '65px',
         skillIndex: 0,
-        resumeLanguage: 'English'
+        resumeLanguage: 'English',
+        devIconShowName: false,
+        skillDynamicCardShow: false
       }
     },
     components:{ 
       CodeIcon,DeveloperIcon,EducationIcon,EmailIcon,ExperienceIcon,IntroductionIcon,PhoneIcon,TranslateIcon,ToolsIcon,SkillsIcon,WebsiteIcon,
-      EducationCard,ExperienceCard,SkillDynamicCard,SkillIconList
+      VisibilityIcon,
+      ResumeCard,SkillDynamicCard,SkillIconList
     },
     methods:{
       changeSkillCardParent(_id){
@@ -60,6 +57,9 @@
         event.target.classList.add("language-button-selected")
         this.resumeLanguage = language
         this.skillIndex = 0
+      },
+      toggleSkillCard(event){
+        event.target.value = 'test'
       },
       async RequestResumeInfo(userId,language){
         this.user = await UserService.getUser(userId,language);
@@ -84,35 +84,42 @@
 
 <template>
   <div class="flex-bar-buttons-languages">
-    <button class="language-button-left language-button-selected" @click="changeLanguageSelected($event,'English')">English</button>
-    <button class="language-button-right" @click="changeLanguageSelected($event,'Portuguese')">Portuguese</button>
+    <button class="language-button-left language-button-selected" @click="changeLanguageSelected($event,'English')">
+      English
+    </button>
+    <button class="language-button-right" @click="changeLanguageSelected($event,'Portuguese')">
+      Portuguese
+    </button>
   </div>
   <section name="Basic-Information" class="basic-info">
-    <h1 class="basic-info-heading">{{ user.fullname }}</h1>
+    <h1 class="basic-info-heading">
+      {{ user.fullname }}
+    </h1>
     <h2 class="developer basic-info-heading">
-      <DeveloperIcon class="svg-basicinfo" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth"/>{{ userInfo.title }}
+      <DeveloperIcon class="svg-basicinfo"/>
+      {{ userInfo.title }}
     </h2>
     <div class="flex-row-info">
       <div name="Phones" class="flex-row-info-type">
         <h3 class="flex-row-info-item" v-for="phone in user.phone">
-          <PhoneIcon class="svg-heading" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth"/>
           <p class="info-item">
+            <PhoneIcon class="svg-heading"/>
             {{ phone }}
           </p>
         </h3>
       </div>
       <div name="Emails" class="flex-row-info-type">
         <h3 class="flex-row-info-item" v-for="email in user.email">
-          <EmailIcon class="svg-heading" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth"/>
-          <a class="link" v-bind:href="'mailto:'+email" target="_blank">
+          <a class="flex-link" v-bind:href="'mailto:'+email" target="_blank">
+            <EmailIcon class="svg-heading"/>
             {{ email }}
           </a>
         </h3>
       </div>
       <div name="Websites" class="flex-row-info-type">
         <h3 class="flex-row-info-item" v-for="website in user.website">
-          <WebsiteIcon class="svg-heading" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth"/>
-          <a class="link" v-bind:href="'https://'+website" target="_blank">
+          <a class="flex-link" v-bind:href="'https://'+website" target="_blank">
+            <WebsiteIcon class="svg-heading"/>
             {{ website }}
           </a>
         </h3>
@@ -121,7 +128,7 @@
   </section>
   <section name="Introduction">
     <h2 class="resume-section-heading">
-      <IntroductionIcon class="svg-heading" v-bind:height="headingIconHeight" v-bind:width="headingIconWidth"/>
+      <IntroductionIcon class="svg-heading"/>
       <span v-if="resumeLanguage == 'English'">Introduction</span>
       <span v-if="resumeLanguage == 'Portuguese'">Introdução</span>
     </h2>
@@ -129,37 +136,58 @@
   </section>
   <section name="Education">
     <h2 class="resume-section-heading">
-      <EducationIcon class="svg-heading" v-bind:height="headingIconHeight" v-bind:width="headingIconWidth"/>
+      <EducationIcon class="svg-heading"/>
       <span v-if="resumeLanguage == 'English'">Education</span>
       <span v-if="resumeLanguage == 'Portuguese'">Educação</span>
     </h2>
-    <EducationCard v-for="education in educationList" v-bind:item="education" v-bind:language="resumeLanguage"/>
+    <ResumeCard v-for="education in educationList" 
+    v-bind:item="education" 
+    v-bind:language="resumeLanguage"
+    v-bind:itemType="'Education'"/>
   </section>
   <section name="Experience">
     <h2 class="resume-section-heading">
-      <ExperienceIcon class="svg-heading" v-bind:height="headingIconHeight" v-bind:width="headingIconWidth"/>
+      <ExperienceIcon class="svg-heading"/>
       <span v-if="resumeLanguage == 'English'">Experience</span>
       <span v-if="resumeLanguage == 'Portuguese'">Experiências</span>
     </h2>
-    <ExperienceCard v-for="experience in experiencesList" v-bind:item="experience" v-bind:language="resumeLanguage"/>
+    <ResumeCard v-for="experience in experiencesList" 
+    v-bind:item="experience" 
+    v-bind:language="resumeLanguage"
+    v-bind:itemType="'Experience'"/>
   </section>
   <section name="Skills">
     <h2 class="resume-section-heading">
-      <SkillsIcon class="svg-heading" v-bind:height="headingIconHeight" v-bind:width="headingIconWidth"/>
+      <SkillsIcon class="svg-heading"/>
       <span v-if="resumeLanguage == 'English'">Skills</span>
       <span v-if="resumeLanguage == 'Portuguese'">Habilidades</span>
     </h2>
     <div class="flex-bar-buttons-skills">
-      <button  @click="skillDynamicCardShow = !skillDynamicCardShow">
-        <span v-if="resumeLanguage == 'English'">Show/Hide Details</span>
-        <span v-if="resumeLanguage == 'Portuguese'">Mostrar/Esconder Detalhes</span>
+      <button class="flex-button" @click="skillDynamicCardShow = !skillDynamicCardShow">
+        <VisibilityIcon class="svg-button" />
+        <span v-if="resumeLanguage == 'Portuguese'">
+          <span v-if="skillDynamicCardShow">
+            Esconder Detalhes
+          </span>
+          <span v-else>
+            Mostrar Detalhes
+          </span>
+        </span>
+        <span v-else>
+          <span v-if="skillDynamicCardShow">
+            Hide Details
+          </span>
+          <span v-else>
+            Show Details
+          </span>
+        </span>
       </button>
     </div>
-    <SkillDynamicCard v-if="skillDynamicCardShow" v-bind:item="skillsList[skillIndex]" />
+    <SkillDynamicCard v-if="skillDynamicCardShow" v-bind:item="skillsList[skillIndex]"/>
     <h3 class="resume-section-sub-heading">
-      <CodeIcon class="svg-subheading" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth" />
-      <span v-if="resumeLanguage == 'English'">Programming Languages</span>
+      <CodeIcon class="svg-subheading"/>
       <span v-if="resumeLanguage == 'Portuguese'">Linguagens de Programação</span>
+      <span v-else>Programming Languages</span>
     </h3>
     <div class="skill-flex-icons">
       <SkillIconList v-for="item in skillsList"
@@ -170,7 +198,7 @@
         v-on:changeSkillCardChild="changeSkillCardParent"/>
     </div>
     <h3 class="resume-section-sub-heading">
-      <ToolsIcon class="svg-subheading" v-bind:height="subHeadingIconHeight" v-bind:width="subHeadingIconWidth" />
+      <ToolsIcon class="svg-subheading"/>
       <span v-if="resumeLanguage == 'English'">Tools</span>
       <span v-if="resumeLanguage == 'Portuguese'">Ferramentas</span>
     </h3>
@@ -233,19 +261,26 @@
     align-content: center;
   }
 
-  .flex-row-info-item{
+  .flex-row-info-item, .flex-link, .info-item{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
   }
 
-  .link,.info-item{
+  .flex-link{
     color: var(--color-text-primary);
     text-decoration: none;
-    padding: 0.3rem 0.2rem;
+    align-items: unset;
   }
-  .link:hover{
+
+  .flex-link,.info-item{
+    color: var(--color-text-primary);
+    text-decoration: none;
+    padding-right: 0.3rem;
+  }
+
+  .flex-link:hover{
     background-color: var(--color-button-background-highlight);
     border-radius: 8px;
   }
@@ -269,16 +304,33 @@
     margin: 0 0.3rem 0 0;
     min-height: 30px;
     min-width: 30px;
+    max-height: 30px;
+    max-width: 30px;
   }
 
   .svg-subheading{
     min-height: 20px;
     min-width: 20px;
+    max-height: 20px;
+    max-width: 20px;
+  }
+  
+  .svg-button{
+    margin: 0 0.3rem 0 0;
   }
 
-  .svg-basicinfo{
+  .svg-basicinfo,.svg-button{
     min-height: 25px;
     min-width: 25px;
+    max-height: 25px;
+    max-width: 25px;
+  }
+
+  .flex-button{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
   }
 
   .resume-section-paragraph{
@@ -322,6 +374,7 @@
 
   .language-button-selected{
     background-color: var(--color-button-background-highlight);
+    cursor: default;
   }
 
   @media (max-width: 700px){

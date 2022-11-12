@@ -13,7 +13,7 @@ class UserExperienceService {
             language:String(language)
           }
         });
-        var optionsDate= { year:"numeric", month:"2-digit", timeZone: 'UTC'};
+        var optionsDate= { year:"numeric", month:"2-digit", timeZone: 'UTC' };
         const data = res.data.map(experience => ({
           ...experience
         }));

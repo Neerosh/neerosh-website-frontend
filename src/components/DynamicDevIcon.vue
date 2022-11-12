@@ -34,28 +34,29 @@
 </script>
 
 <template>
-  <C_Icon         v-if="iconName == 'C'"           v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <CsharpIcon     v-if="iconName == 'C#'"          v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <ClarionIcon    v-if="iconName == 'Clarion'"     v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <CssIcon        v-if="iconName == 'CSS'"         v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <ElectronIcon   v-if="iconName == 'Electron'"    v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <HtmlIcon       v-if="iconName == 'HTML'"        v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <GitHubIcon     v-if="iconName == 'GitHub'"      v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <JavaIcon       v-if="iconName == 'Java'"        v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <JavascriptIcon v-if="iconName == 'Javascript'"  v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <PhpIcon        v-if="iconName == 'PHP'"         v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <PythonIcon     v-if="iconName == 'Python'"      v-bind:height="iconHeight" v-bind:width="iconWidth" />
-
-  <AndroidStudioIcon  v-if="iconName == 'Android Studio'" v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <GitIcon        v-if="iconName == 'Git'"         v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <GimpIcon       v-if="iconName == 'Gimp'"        v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <MysqlIcon      v-if="iconName == 'MySQL'"       v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <NodejsIcon     v-if="iconName == 'Node.js'"     v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <SqliteIcon     v-if="iconName == 'SQLite'"      v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <SqlServerIcon  v-if="iconName == 'SQL Server'"  v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <VisualStudioIcon v-if="iconName == 'Visual Studio'" v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <VisualStudioCodeIcon v-if="iconName == 'Visual Studio Code'" v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <VuejsIcon      v-if="iconName == 'Vue.js'"      v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <LinuxIcon      v-if="iconName == 'Linux'"       v-bind:height="iconHeight" v-bind:width="iconWidth" />
-  <WindowsIcon    v-if="iconName == 'Windows'"     v-bind:height="iconHeight" v-bind:width="iconWidth" />
+  <div>
+    <C_Icon         v-if="iconName == 'C'"         />
+    <CsharpIcon     v-if="iconName == 'C#'"        />
+    <ClarionIcon    v-if="iconName == 'Clarion'"   />
+    <CssIcon        v-if="iconName == 'CSS'"       />
+    <ElectronIcon   v-if="iconName == 'Electron'"  />
+    <HtmlIcon       v-if="iconName == 'HTML'"      />
+    <GitHubIcon     v-if="iconName == 'GitHub'"    />
+    <JavaIcon       v-if="iconName == 'Java'"      />
+    <JavascriptIcon v-if="iconName == 'Javascript'"/>
+    <PhpIcon        v-if="iconName == 'PHP'"       />
+    <PythonIcon     v-if="iconName == 'Python'"    />
+    <GitIcon        v-if="iconName == 'Git'"       />
+    <GimpIcon       v-if="iconName == 'Gimp'"      />
+    <MysqlIcon      v-if="iconName == 'MySQL'"     />
+    <NodejsIcon     v-if="iconName == 'Node.js'"   />
+    <SqliteIcon     v-if="iconName == 'SQLite'"    />
+    <SqlServerIcon  v-if="iconName == 'SQL Server'"/>
+    <VuejsIcon      v-if="iconName == 'Vue.js'"    />
+    <LinuxIcon      v-if="iconName == 'Linux'"     />
+    <WindowsIcon    v-if="iconName == 'Windows'"   />
+    <VisualStudioIcon     v-if="iconName == 'Visual Studio'"    />
+    <VisualStudioCodeIcon v-if="iconName == 'Visual Studio Code'"  />
+    <AndroidStudioIcon    v-if="iconName == 'Android Studio'"   />
+  </div>
 </template>
