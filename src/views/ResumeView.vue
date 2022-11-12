@@ -9,7 +9,7 @@
   import TranslateIcon from '../components/icons/TranslateIcon.vue';
   import ToolsIcon from '../components/icons/ToolsIcon.vue';
   import SkillsIcon from '../components/icons/resume/SkillsIcon.vue';
-  import WebsiteIcon from '../components/icons/WebsiteIcon.vue';
+  import LinkIcon from '../components/icons/LinkIcon.vue';
   import VisibilityIcon from '../components/icons/VisibilityIcon.vue';
 
   import ResumeCard from '../components/resume/ResumeCard.vue';
@@ -39,7 +39,7 @@
       }
     },
     components:{ 
-      CodeIcon,DeveloperIcon,EducationIcon,EmailIcon,ExperienceIcon,IntroductionIcon,PhoneIcon,TranslateIcon,ToolsIcon,SkillsIcon,WebsiteIcon,
+      CodeIcon,DeveloperIcon,EducationIcon,EmailIcon,ExperienceIcon,IntroductionIcon,PhoneIcon,TranslateIcon,ToolsIcon,SkillsIcon,LinkIcon,
       VisibilityIcon,
       ResumeCard,SkillDynamicCard,SkillIconList
     },
@@ -57,9 +57,6 @@
         event.target.classList.add("language-button-selected")
         this.resumeLanguage = language
         this.skillIndex = 0
-      },
-      toggleSkillCard(event){
-        event.target.value = 'test'
       },
       async RequestResumeInfo(userId,language){
         this.user = await UserService.getUser(userId,language);
@@ -119,7 +116,7 @@
       <div name="Websites" class="flex-row-info-type">
         <h3 class="flex-row-info-item" v-for="website in user.website">
           <a class="flex-link" v-bind:href="'https://'+website" target="_blank">
-            <WebsiteIcon class="svg-heading"/>
+            <LinkIcon class="svg-heading"/>
             {{ website }}
           </a>
         </h3>

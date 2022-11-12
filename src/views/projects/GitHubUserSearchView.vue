@@ -51,7 +51,7 @@ export default {
 <template>
   <div class="center-text">
     <h1 class="flex-bar-wrap">
-      <GitHubIcon />GitHub User Search
+      <GitHubIcon class="svg"/>GitHub User Search
     </h1>
     <p class="project-description">
       Search request made using javascript and the GitHub API, listing basic information of the user and his publics repositories in cards.
@@ -80,7 +80,6 @@ export default {
        
 <style scoped>
   .center-text{
-    text-align: center;
     margin-bottom: 1rem;
   }
   .flex-bar-nowrap{
@@ -107,6 +106,7 @@ export default {
     align-items: center;
     width: 100%;
   }
+
   .flex-color{
     display: flex;
     flex-direction: row;
@@ -114,6 +114,7 @@ export default {
     align-items: center;
     padding-right: 0.5rem;
   }
+
   .input-text{
     margin: 1rem 0;
     padding: 0.7rem 0.5rem;
@@ -122,6 +123,7 @@ export default {
     border: solid 2px var(--color-navbar-border);
     border-radius: 10px;
   }
+
   .project-description{
     padding: 1rem 0.5rem;
     text-align: center;
@@ -129,15 +131,18 @@ export default {
     font-size: 16px;
   }
 
+  .svg {
+    min-height: 25px;
+    max-height: 25px;
+    min-width: 25px;
+    max-width: 25px;
+    margin-right: 0.3rem;
+  }
+
   label{
     padding:0.5rem;
     color: var(--color-text-primary);
     font-size: 17px;
-  }
-  svg {
-    height: 35px;
-    width: 35px;
-    margin-right: 0.3rem;
   }
 
   button{
@@ -156,14 +161,12 @@ export default {
     cursor: pointer;
     transition: 0.4s;
   }
-  @media (max-width: 1000px) {
-    .input-text{
-      width: 100%;
-    }
-  }
   @media (max-width: 700px){
     .flex-color{
       justify-content: space-between;
+      width: 100%;
+    }
+    .input-text{
       width: 100%;
     }
   }

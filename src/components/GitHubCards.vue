@@ -114,7 +114,7 @@
 		flex-direction: column;
 		border: 2px solid var(--color-card-border);
 		background-color: var(--color-card-background);
-	border-radius: 8px;
+		border-radius: 8px;
 	}
 	.card-content{
 	  padding: 1rem;

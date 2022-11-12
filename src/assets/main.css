@@ -5,6 +5,10 @@
   font-weight: normal;
 }
 
+a{
+  text-decoration: none;
+}
+
 button{
   padding: 0.5rem 1rem;
   font-size: 15px;
@@ -20,4 +24,8 @@ button:hover{
   background-color: var(--color-button-background-highlight);
   cursor: pointer;
   transition: 0.4s;
+}
+
+.center-text{
+  text-align: center;
 }
