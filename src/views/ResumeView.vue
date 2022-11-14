@@ -1,16 +1,16 @@
 <script>
-  import CodeIcon from '../components/icons/CodeIcon.vue';
+  import CodeIcon from '../components/icons/generic/CodeIcon.vue';
   import DeveloperIcon from '../components/icons/resume/DeveloperIcon.vue';
   import EducationIcon from '../components/icons/resume/EducationIcon.vue';
-  import EmailIcon from '../components/icons/EmailICon.vue';
+  import EmailIcon from '../components/icons/resume/EmailIcon.vue';
   import ExperienceIcon from '../components/icons/resume/ExperienceIcon.vue';
   import IntroductionIcon from '../components/icons/resume/IntroductionIcon.vue';
-  import PhoneIcon from '../components/icons/PhoneIcon.vue';
-  import TranslateIcon from '../components/icons/TranslateIcon.vue';
-  import ToolsIcon from '../components/icons/ToolsIcon.vue';
+  import PhoneIcon from '../components/icons/resume/PhoneIcon.vue';
+  import TranslateIcon from '../components/icons/generic/TranslateIcon.vue';
+  import ToolsIcon from '../components/icons/generic/ToolsIcon.vue';
   import SkillsIcon from '../components/icons/resume/SkillsIcon.vue';
-  import LinkIcon from '../components/icons/LinkIcon.vue';
-  import VisibilityIcon from '../components/icons/VisibilityIcon.vue';
+  import LinkIcon from '../components/icons/generic/LinkIcon.vue';
+  import VisibilityIcon from '../components/icons/generic/VisibilityIcon.vue';
 
   import ResumeCard from '../components/resume/ResumeCard.vue';
   import SkillDynamicCard from '../components/resume/SkillDynamicCard.vue';
@@ -30,8 +30,8 @@
         experiencesList: [],
         educationList: [],
         skillsList: [],
-        devIconHeight: '65px',
-        devIconWidth: '65px',
+        devIconHeight: '50px',
+        devIconWidth: '50px',
         skillIndex: 0,
         resumeLanguage: 'English',
         devIconShowName: false,
@@ -51,10 +51,15 @@
       },
       changeLanguageSelected(event,language){
         var selectedButton = document.getElementsByClassName("language-button-selected");
+        var selectedElement = event.target
         for (var i = 0; i < selectedButton.length; i++) {
           selectedButton[i].classList.remove("language-button-selected")
         }
-        event.target.classList.add("language-button-selected")
+
+        if (selectedElement.tagName == 'SPAN'){
+          selectedElement = event.target.parentElement
+        }
+        selectedElement.classList.add("language-button-selected")
         this.resumeLanguage = language
         this.skillIndex = 0
       },
@@ -82,10 +87,12 @@
 <template>
   <div class="flex-bar-buttons-languages">
     <button class="language-button-left language-button-selected" @click="changeLanguageSelected($event,'English')">
-      English
+      <span v-if="resumeLanguage == 'Portuguese'">Inglês</span>
+      <span v-else>English</span>
     </button>
     <button class="language-button-right" @click="changeLanguageSelected($event,'Portuguese')">
-      Portuguese
+      <span v-if="resumeLanguage == 'Portuguese'">Português</span>
+      <span v-else>Portuguese</span>
     </button>
   </div>
   <section name="Basic-Information" class="basic-info">
@@ -126,16 +133,16 @@
   <section name="Introduction">
     <h2 class="resume-section-heading">
       <IntroductionIcon class="svg-heading"/>
-      <span v-if="resumeLanguage == 'English'">Introduction</span>
       <span v-if="resumeLanguage == 'Portuguese'">Introdução</span>
+      <span v-else>Introduction</span>
     </h2>
     <p class="resume-section-paragraph"> {{ userInfo.introduction }} </p>
   </section>
   <section name="Education">
     <h2 class="resume-section-heading">
       <EducationIcon class="svg-heading"/>
-      <span v-if="resumeLanguage == 'English'">Education</span>
       <span v-if="resumeLanguage == 'Portuguese'">Educação</span>
+      <span v-else>Education</span>
     </h2>
     <ResumeCard v-for="education in educationList" 
     v-bind:item="education" 
@@ -145,8 +152,8 @@
   <section name="Experience">
     <h2 class="resume-section-heading">
       <ExperienceIcon class="svg-heading"/>
-      <span v-if="resumeLanguage == 'English'">Experience</span>
       <span v-if="resumeLanguage == 'Portuguese'">Experiências</span>
+      <span v-else>Experience</span>
     </h2>
     <ResumeCard v-for="experience in experiencesList" 
     v-bind:item="experience" 
@@ -156,8 +163,8 @@
   <section name="Skills">
     <h2 class="resume-section-heading">
       <SkillsIcon class="svg-heading"/>
-      <span v-if="resumeLanguage == 'English'">Skills</span>
       <span v-if="resumeLanguage == 'Portuguese'">Habilidades</span>
+      <span v-else>Skills</span>
     </h2>
     <div class="flex-bar-buttons-skills">
       <button class="flex-button" @click="skillDynamicCardShow = !skillDynamicCardShow">
@@ -196,8 +203,8 @@
     </div>
     <h3 class="resume-section-sub-heading">
       <ToolsIcon class="svg-subheading"/>
-      <span v-if="resumeLanguage == 'English'">Tools</span>
       <span v-if="resumeLanguage == 'Portuguese'">Ferramentas</span>
+      <span v-else>Tools</span>
     </h3>
     <div class="skill-flex-icons">
       <SkillIconList v-for="item in skillsList"

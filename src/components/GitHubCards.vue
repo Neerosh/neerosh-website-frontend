@@ -1,6 +1,6 @@
 <script>
-  import UserIcon from './icons/UserIcon.vue';
-  import RepositoryIcon from './icons/RepositoryIcon.vue';
+  import UserIcon from './icons/generic/UserIcon.vue';
+  import RepositoryIcon from './icons/projects/GitHubSearch/RepositoryIcon.vue';
 	import GithubService from '../services/GithubService.js';
 
 	export default {
@@ -109,7 +109,7 @@
 		align-items: center;
 	}
 
-	.card{
+	.card, .card-profile, .card-error{
 		display: flex;
 		flex-direction: column;
 		border: 2px solid var(--color-card-border);
@@ -118,6 +118,7 @@
 	}
 	.card-content{
 	  padding: 1rem;
+		height: 100%;
 	}
 	.card-footer{
 		margin-top: auto;
@@ -127,23 +128,17 @@
 	}
 
 	.card-profile{
-		display: flex;
-		flex-direction: column;
 		padding: 1rem;
 		border: 2px solid var(--color-card-border);
 		background-color: var(--color-card-background);
-		width: 50%;
-		border-radius: 8px;
+		width: 60%;
 	}
 
 	.card-error{
-		display: flex;
-		flex-direction: column;
 		padding: 1rem;
 		border: 2px solid var(--color-error);
 		background-color: var(--color-card-background);
-		width: 50%;
-		border-radius: 8px;
+		width: 80%;
 	}
 
 	.title-link{
@@ -154,6 +149,7 @@
 	text-decoration: none;
 	font-weight: 600;
 	}
+
 	.title-link:hover{
 	color:  var(--color-link-hover);
 	transition:  0.4s;
@@ -173,7 +169,14 @@
 		margin-right: 0.5rem;
 	}
 
+
 	@media (max-width: 1000px) {
+		.card-list{
+			grid-template-columns: repeat(2,minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 700px) {
 		.card-list{
 			grid-template-columns: minmax(0, 1fr);
 		}

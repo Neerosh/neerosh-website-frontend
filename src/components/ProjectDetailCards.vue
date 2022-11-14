@@ -1,4 +1,5 @@
 <script>
+  import DynamicProjectIcon from './DynamicProjectIcon.vue'
   export default {
     props: {
       projectDetails: {
@@ -6,16 +7,19 @@
         require: true
       }
     },
-    components: {  }
+    components: { DynamicProjectIcon }
   }
 </script>
 
 <template>
   <div class="project-detail-list">
     <div class="card" v-for="item in projectDetails">
-      <h2>
-        {{ item.name }}
-      </h2>
+      <div class="flex-name">
+        <DynamicProjectIcon v-bind:iconName="item.icon" v-bind:iconHeight="'30px'" v-bind:iconWidth="'30px'"/>
+        <h3>
+          {{ item.name }}
+        </h3>
+      </div>
       <p class="description">
         {{ item.description }}
       </p>
@@ -42,9 +46,30 @@
   }
 
   .description{
-    color: var(--color-text-secondary)
+    color: var(--color-text-secondary);
+    margin-top: 0.5rem;
   }
 
+  .flex-name{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    column-gap: 0.3rem;
+  }
+
+  .flex-name > h3{
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  .svg-name{
+    min-height: 30px;
+    max-height: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    margin-right: 0.3rem;
+  }
 
   @media (max-width: 1000px) {
     .project-detail-list{

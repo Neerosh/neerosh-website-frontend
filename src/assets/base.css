@@ -84,20 +84,3 @@
   position: relative;
   font-weight: normal;
 }
-
-body {
-  min-height:100vh;
-  color: var(--color-text-primary);
-  background: var(--color-background);
-  line-height: 1.5;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h1{
-  font-size: 1.7em;
-}

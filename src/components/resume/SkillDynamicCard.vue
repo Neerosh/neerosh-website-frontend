@@ -1,6 +1,6 @@
 <script setup>
   import DynamicDevIcon from '../DynamicDevIcon.vue';
-  import LevelIcon from '../icons/LevelIcon.vue'
+  import LevelIcon from '../icons/resume/LevelIcon.vue'
   const props = defineProps({
     item: Object
   })

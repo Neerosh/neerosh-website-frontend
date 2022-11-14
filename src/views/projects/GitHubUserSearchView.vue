@@ -82,6 +82,7 @@ export default {
   .center-text{
     margin-bottom: 1rem;
   }
+  
   .flex-bar-nowrap{
     display: flex;
     flex-direction: row;
@@ -90,6 +91,7 @@ export default {
     align-items: center;
     width: 100%;
   }
+
   .flex-bar-wrap{
     display: flex;
     flex-direction: row;
@@ -97,7 +99,9 @@ export default {
     justify-content: center;
     align-items: center;
     width: 100%;
+    font-weight: 500;
   }
+
   .flex-bar-colors{
     display: flex;
     flex-direction: row;
@@ -132,10 +136,10 @@ export default {
   }
 
   .svg {
-    min-height: 25px;
-    max-height: 25px;
-    min-width: 25px;
-    max-width: 25px;
+    min-height: 30px;
+    max-height: 30px;
+    min-width: 30px;
+    max-width: 30px;
     margin-right: 0.3rem;
   }
 
@@ -166,6 +170,7 @@ export default {
       justify-content: space-between;
       width: 100%;
     }
+    
     .input-text{
       width: 100%;
     }

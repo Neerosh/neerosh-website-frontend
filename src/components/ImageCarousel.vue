@@ -1,6 +1,6 @@
 <script>
-  import LeftIcon from './icons/LeftIcon.vue'
-  import RightIcon from './icons/RightIcon.vue'
+  import LeftIcon from './icons/generic/LeftIcon.vue'
+  import RightIcon from './icons/generic/RightIcon.vue'
 
 	export default {
 		props:{ 
@@ -73,7 +73,7 @@
   .flex-image, .flex-bar-miniatures, .flex-bar-buttons, .flex-button{
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     width: 100%;

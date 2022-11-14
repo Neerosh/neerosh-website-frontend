@@ -1,7 +1,7 @@
 <script setup>
-  import LocationIcon from '../icons/LocationIcon.vue'
-  import CalendarIcon from '../icons/CalendarIcon.vue'
-  import LevelIcon from '../icons/LevelIcon.vue'
+  import LocationIcon from '../icons/generic/LocationIcon.vue'
+  import CalendarIcon from '../icons/resume/CalendarIcon.vue'
+  import LevelIcon from '../icons/resume/LevelIcon.vue'
   import ExperienceItemIcon from '../icons/resume/ExperienceItemIcon.vue'
   import EducationItemIcon from '../icons/resume/EducationItemIcon.vue';
   import DynamicDevIcon from '../DynamicDevIcon.vue';

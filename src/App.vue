@@ -4,7 +4,6 @@
   import HomeIcon from './components/icons/menu/HomeIcon.vue';
   import ProjectsIcon from './components/icons/menu/ProjectsIcon.vue';
   import ResumeIcon from './components/icons/menu/ResumeIcon.vue';
-  import ContactIcon from './components/icons/menu/ContactIcon.vue';
   import BarIcon from './components/icons/menu/BarIcon.vue';
 
   const navIconHeight = ref('22px')
@@ -56,10 +55,6 @@
             <ResumeIcon class="svg-navitem" v-bind:height="navIconHeight" v-bind:width="navIconWidth"
             /> Resume
           </RouterLink>
-          <RouterLink active-class="active-link" class="navbar-item" to="/contact">
-            <ContactIcon class="svg-navitem" v-bind:height="navIconHeight" v-bind:width="navIconWidth"
-            /> Contact
-          </RouterLink>
         </div>
       </nav>
     </div>
@@ -79,7 +74,7 @@
     align-items: center;
     column-gap: 0.3rem;
     row-gap: 0.3rem;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.5rem;
     background-color: var(--color-navbar-background);
     border-bottom: solid 2px var(--color-navbar-border);
   }
@@ -145,7 +140,7 @@
     margin-left: auto;
     margin-right: auto;
     max-width: 1440px;
-    padding: 1rem;
+    padding: 1rem 2rem;
   }
 
   @media (max-width: 700px){
@@ -166,17 +161,16 @@
       flex-direction: column;
       width: 100%;
       align-items: stretch;
-      transition: 1s;
     }
 
     .navbar{
       flex-direction: column;
       align-items: end;
-      padding: 0.5rem;
+      padding: 0.5rem 1rem;
     }
 
     main{
-      padding: 1rem .7rem;
+      padding: 1rem;
     }
 
   }

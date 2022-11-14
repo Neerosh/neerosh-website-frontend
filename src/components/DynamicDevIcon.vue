@@ -24,17 +24,14 @@
   import VuejsIcon from './icons/development/tools/VuejsIcon.vue';
   import WindowsIcon from './icons/development/tools/WindowsIcon.vue';
 
-
   const props = defineProps({
     iconName: String,
     iconHeight: String,
     iconWidth: String,
   })
-
 </script>
 
 <template>
-  <div>
     <C_Icon         v-if="iconName == 'C'"         />
     <CsharpIcon     v-if="iconName == 'C#'"        />
     <ClarionIcon    v-if="iconName == 'Clarion'"   />
@@ -58,5 +55,15 @@
     <VisualStudioIcon     v-if="iconName == 'Visual Studio'"    />
     <VisualStudioCodeIcon v-if="iconName == 'Visual Studio Code'"  />
     <AndroidStudioIcon    v-if="iconName == 'Android Studio'"   />
-  </div>
 </template>
+
+<style scoped>
+
+  svg{
+    min-height: v-bind(iconHeight);
+    max-height: v-bind(iconHeight);
+    min-width: v-bind(iconWidth);
+    max-width: v-bind(iconWidth);
+  }
+
+</style>
