@@ -6,7 +6,7 @@
 		props:{ 
 			imagesList: {
 				typeof: Array,
-				default: true
+				require: true
 			},
 		},
     data() {
@@ -18,7 +18,11 @@
       LeftIcon,RightIcon
     },
     methods:{
-      changeImage(direction){
+      changeImageArrows(direction){
+        var selectedImage = document.getElementById(this.imagesList[this.selectedIndex].name+'_'+this.selectedIndex)
+
+        selectedImage.classList.remove("mini-image-selected")
+
         if (direction == 'right' && this.selectedIndex < (this.imagesList.length-1)){
           this.selectedIndex += 1
         }
@@ -26,6 +30,21 @@
         if (direction == 'left' && this.selectedIndex > 0){
           this.selectedIndex -= 1
         }
+
+        selectedImage = document.getElementById(this.imagesList[this.selectedIndex].name+'_'+this.selectedIndex)
+
+        selectedImage.classList.add("mini-image-selected")
+      },
+      changeImageClick(index){
+        var selectedImage = document.getElementById(this.imagesList[this.selectedIndex].name+'_'+this.selectedIndex)
+
+        selectedImage.classList.remove("mini-image-selected")
+
+        this.selectedIndex = index
+
+        selectedImage = document.getElementById(this.imagesList[this.selectedIndex].name+'_'+this.selectedIndex)
+        
+        selectedImage.classList.add("mini-image-selected")
       }
     }
   }
@@ -33,12 +52,20 @@
 
 <template>
   <div class="flex-image">
-    <LeftIcon class="svg-arrows" @click="changeImage('left')"/>
-    <img class="main-image" v-bind:src="imagesList[selectedIndex].path" />
-    <RightIcon class="svg-arrows" @click="changeImage('right')"/>
+    <LeftIcon class="svg-arrows" @click="changeImageArrows('left')"/>
+    <img class="main-image" 
+    v-bind:alt="imagesList[selectedIndex].name"
+    v-bind:src="imagesList[selectedIndex].path" />
+    <RightIcon class="svg-arrows" @click="changeImageArrows('right')"/>
   </div>
   <div class="flex-bar-miniatures">
-    <img class="mini-image" v-for="image in imagesList" v-bind:src="image.path" @click="selectedIndex = image.id"/>
+    <img class="mini-image"
+    v-for="(image,index) in imagesList" 
+    v-bind:id="image.name+'_'+index"
+    v-bind:alt="image.name"
+    v-bind:src="image.path"
+    v-bind:class="index == 0 ? 'mini-image-selected': true"
+    @click="changeImageClick(index)"/>
   </div>
 </template>
 
@@ -80,21 +107,19 @@
   }
 
   .mini-image{
-    transition: 0.2s;
-    width: 200px;
-    border: 1px solid var(--color-text-secondary);
+    width: 180px;
+    border: 2px solid var(--color-button-background-highlight);
   }
 
-  .mini-image:hover{
-    border-color: var(--color-card-border);
+  .mini-image-selected, .mini-image-selected:hover{
+    border: 3px solid var(--color-card-border);
   }
 
-  
   @media (max-width: 800px) {
     .svg-arrows{
       display: none;
     }
-
+    
     .main-image{
       width: 100%;
     }
