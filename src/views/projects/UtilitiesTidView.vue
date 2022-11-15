@@ -18,6 +18,14 @@
       name:'Manage Processes',
       path:'/images/Projects/utilitiesTid/UtilitiesTID_ManageProcesses.png'
     },
+    {
+      name:'Clarion Converter',
+      path:'/images/Projects/utilitiesTid/UtilitiesTID_ClarionConverter.png'
+    },
+    {
+      name:'File Locks',
+      path:'/images/Projects/utilitiesTid/UtilitiesTID_FileLocks.png'
+    },
   ]
 
   const detailsList = [

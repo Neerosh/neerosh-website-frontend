@@ -82,6 +82,7 @@
   .flex-bar-miniatures{
     margin: 1rem 0 0 0;
     column-gap: 0.5rem;
+    row-gap: 0.5rem;
   }
 
   .flex-image{
