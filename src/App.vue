@@ -5,10 +5,13 @@
   import ProjectsIcon from './components/icons/menu/ProjectsIcon.vue';
   import ResumeIcon from './components/icons/menu/ResumeIcon.vue';
   import BarIcon from './components/icons/menu/BarIcon.vue';
+  import LogoIcon from './components/icons/LogoIcon.vue';
 
   const navIconHeight = ref('22px')
   const navIconWidth = ref('22px')
+  var navLogoHeight = ref('50px')
   var showMenuMobile = false
+
 
   async function loadMenuMobile(){
     showMenuMobile = !showMenuMobile
@@ -37,24 +40,23 @@
   <header>
     <div>
       <nav class="navbar">
+        <RouterLink class="navbar-item-logo" to="/">
+          <LogoIcon class="svg-logo" v-bind:height="navLogoHeight"/>
+        </RouterLink>
+        <div class="navbar-inner" id="menuDesktop">
+          <RouterLink active-class="active-link" class="navbar-item" to="/projects">
+            <ProjectsIcon class="svg-navitem" v-bind:height="navIconHeight" v-bind:width="navIconWidth" /> 
+            Projects
+          </RouterLink>
+          <RouterLink active-class="active-link" class="navbar-item" to="/resume">
+            <ResumeIcon class="svg-navitem" v-bind:height="navIconHeight" v-bind:width="navIconWidth" />
+            Resume
+          </RouterLink>
+        </div>
         <div class="navbar-toggle" @click="loadMenuMobile()">
           <BarIcon class="svg-navitem-mobile" v-bind:height="navIconHeight" v-bind:width="navIconWidth" />
         </div>
         <div class="navbar-mobile" id="menuMobile">
-        </div>
-        <div class="navbar-inner" id="menuDesktop">
-          <RouterLink active-class="active-link" class="navbar-item" to="/">
-            <HomeIcon class="svg-navitem" v-bind:height="navIconHeight" v-bind:width="navIconWidth"
-            /> Home
-          </RouterLink>
-          <RouterLink active-class="active-link" class="navbar-item" to="/projects">
-            <ProjectsIcon class="svg-navitem" v-bind:height="navIconHeight" v-bind:width="navIconWidth"
-            /> Projects
-          </RouterLink>
-          <RouterLink active-class="active-link" class="navbar-item" to="/resume">
-            <ResumeIcon class="svg-navitem" v-bind:height="navIconHeight" v-bind:width="navIconWidth"
-            /> Resume
-          </RouterLink>
         </div>
       </nav>
     </div>
@@ -70,6 +72,7 @@
 <style scoped>
   .navbar{
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     column-gap: 0.3rem;
@@ -85,6 +88,7 @@
     align-items: center;
     column-gap: 0.3rem;
     row-gap: 0.4rem;
+    margin-left: 0.5rem;
   }
 
   .navbar-mobile{
@@ -93,15 +97,19 @@
   }
 
   .svg-navitem, .svg-navitem-mobile{
-    min-height: 22px;
-    min-width: 22px;
+    min-height: v-bind(navIconHeight);
+    min-width: v-bind(navIconWidth);
+  }
+
+  .svg-logo{
+    min-height: v-bind(navLogoHeight);
   }
 
   .svg-navitem{
     margin-right: 0.3rem;
   }
 
-  .navbar-item, .navbar-toggle{
+  .navbar-item, .navbar-item-logo, .navbar-toggle{
     display: flex;
     align-items: center;
     padding: 0.4rem;
@@ -111,6 +119,10 @@
     border-radius: 5px;
     font-weight: 600;
     border-bottom: solid 3px var(--color-navbar-background);
+  }
+
+  .navbar-item-logo{
+    padding: 0;
   }
 
   .navbar-toggle{
@@ -164,8 +176,7 @@
     }
 
     .navbar{
-      flex-direction: column;
-      align-items: end;
+      justify-content: space-between;
       padding: 0.5rem 1rem;
     }
 

@@ -104,7 +104,7 @@
 
   .main-image{
     transition: 0.2s;
-    width: 700px;
+    width: 650px;
   }
 
   .mini-image{
