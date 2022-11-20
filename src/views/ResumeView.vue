@@ -105,7 +105,7 @@
     </h2>
     <div class="flex-row-info">
       <div name="Phones" class="flex-row-info-type">
-        <h3 class="flex-row-info-item" v-for="phone in user.phone">
+        <h3 class="flex-row-info-item" v-for="phone in user.phones">
           <p class="info-item">
             <PhoneIcon class="svg-heading"/>
             {{ phone }}
@@ -113,7 +113,7 @@
         </h3>
       </div>
       <div name="Emails" class="flex-row-info-type">
-        <h3 class="flex-row-info-item" v-for="email in user.email">
+        <h3 class="flex-row-info-item" v-for="email in user.emails">
           <a class="flex-link" v-bind:href="'mailto:'+email" target="_blank">
             <EmailIcon class="svg-heading"/>
             {{ email }}
@@ -121,7 +121,7 @@
         </h3>
       </div>
       <div name="Websites" class="flex-row-info-type">
-        <h3 class="flex-row-info-item" v-for="website in user.website">
+        <h3 class="flex-row-info-item" v-for="website in user.websites">
           <a class="flex-link" v-bind:href="'https://'+website" target="_blank">
             <LinkIcon class="svg-heading"/>
             {{ website }}

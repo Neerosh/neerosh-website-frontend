@@ -39,6 +39,7 @@ button{
   background-color: var(--color-button-background);
   color: var(--color-text-primary);
   font-weight: 500;
+  word-break: normal;
 }
 
 button:hover{
