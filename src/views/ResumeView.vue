@@ -5,6 +5,7 @@
   import EmailIcon from '../components/icons/resume/EmailIcon.vue';
   import ExperienceIcon from '../components/icons/resume/ExperienceIcon.vue';
   import IntroductionIcon from '../components/icons/resume/IntroductionIcon.vue';
+  import OrderAscendingIcon from '../components/icons/generic/OrderAscendingIcon.vue';
   import PhoneIcon from '../components/icons/resume/PhoneIcon.vue';
   import TranslateIcon from '../components/icons/generic/TranslateIcon.vue';
   import ToolsIcon from '../components/icons/generic/ToolsIcon.vue';
@@ -12,7 +13,7 @@
   import LinkIcon from '../components/icons/generic/LinkIcon.vue';
   import VisibilityIcon from '../components/icons/generic/VisibilityIcon.vue';
 
-  import ResumeCard from '../components/resume/ResumeCard.vue';
+  import ResumeCard from '../components/resume/ResumeCards.vue';
   import SkillDynamicCard from '../components/resume/SkillDynamicCard.vue';
   import SkillIconList from '../components/resume/SkillIconList.vue';
 
@@ -35,11 +36,12 @@
         skillIndex: 0,
         resumeLanguage: 'English',
         devIconShowName: false,
-        skillDynamicCardShow: false
+        skillDynamicCardShow: false,
+        skillListOrderAscending: false,
       }
     },
     components:{ 
-      CodeIcon,DeveloperIcon,EducationIcon,EmailIcon,ExperienceIcon,IntroductionIcon,PhoneIcon,TranslateIcon,ToolsIcon,SkillsIcon,LinkIcon,
+      CodeIcon,DeveloperIcon,EducationIcon,EmailIcon,ExperienceIcon,IntroductionIcon,OrderAscendingIcon,PhoneIcon,TranslateIcon,ToolsIcon,SkillsIcon,LinkIcon,
       VisibilityIcon,
       ResumeCard,SkillDynamicCard,SkillIconList
     },
@@ -69,13 +71,15 @@
         this.educationList = await UserEducationService.getUserEducations(userId,language);
         this.experiencesList = await UserExperienceService.getUserExperiences(userId,language);
         this.skillsList = await UserSkillService.getUserSkills(userId,language);
-  
-      }
+      },
     },
 		watch: {
 			"resumeLanguage": async function(val, oldVal) {
 				await this.RequestResumeInfo("6359bbec73c2685741589a0f",val)
-			}
+			},
+      "skillListOrderAscending": function(val, oldVal){
+        UserSkillService.sortSkillsListByLevel(this.skillsList,val)
+      }
 		},
     async created(){
       await this.RequestResumeInfo("6359bbec73c2685741589a0f","English")
@@ -144,8 +148,7 @@
       <span v-if="resumeLanguage == 'Portuguese'">Educação</span>
       <span v-else>Education</span>
     </h2>
-    <ResumeCard v-for="education in educationList" 
-    v-bind:item="education" 
+    <ResumeCard v-bind:itemList="educationList" 
     v-bind:language="resumeLanguage"
     v-bind:itemType="'Education'"/>
   </section>
@@ -155,8 +158,7 @@
       <span v-if="resumeLanguage == 'Portuguese'">Experiências</span>
       <span v-else>Experience</span>
     </h2>
-    <ResumeCard v-for="experience in experiencesList" 
-    v-bind:item="experience" 
+    <ResumeCard v-bind:itemList="experiencesList" 
     v-bind:language="resumeLanguage"
     v-bind:itemType="'Experience'"/>
   </section>
@@ -166,54 +168,81 @@
       <span v-if="resumeLanguage == 'Portuguese'">Habilidades</span>
       <span v-else>Skills</span>
     </h2>
-    <div class="flex-bar-buttons-skills">
+    <div class="flex-bar-buttons-skills" >
       <button class="flex-button" @click="skillDynamicCardShow = !skillDynamicCardShow">
         <VisibilityIcon class="svg-button" />
         <span v-if="resumeLanguage == 'Portuguese'">
           <span v-if="skillDynamicCardShow">
-            Esconder Detalhes
+            Visualização Simples
           </span>
           <span v-else>
-            Mostrar Detalhes
+            Visualização Dinâmica
           </span>
         </span>
         <span v-else>
           <span v-if="skillDynamicCardShow">
-            Hide Details
+            Simple View
           </span>
           <span v-else>
-            Show Details
+            Dynamic View
+          </span>
+        </span>
+      </button>
+      <button class="flex-button" @click="skillListOrderAscending = !skillListOrderAscending">
+        <OrderAscendingIcon class="svg-button" />
+        <span v-if="resumeLanguage == 'Portuguese'">
+          <span v-if="skillListOrderAscending">
+            Ordenar por Nivel (Decrescente)
+          </span>
+          <span v-else>
+            Ordenar por Nivel (Ascendente)
+          </span>
+        </span>
+        <span v-else>
+          <span v-if="skillListOrderAscending">
+            Order By Level (Descending)
+          </span>
+          <span v-else>
+            Order By Level (Ascending)
           </span>
         </span>
       </button>
     </div>
-    <SkillDynamicCard v-if="skillDynamicCardShow" v-bind:item="skillsList[skillIndex]"/>
-    <h3 class="resume-section-sub-heading">
-      <CodeIcon class="svg-subheading"/>
-      <span v-if="resumeLanguage == 'Portuguese'">Linguagens de Programação</span>
-      <span v-else>Programming Languages</span>
-    </h3>
-    <div class="skill-flex-icons">
-      <SkillIconList v-for="item in skillsList"
-        v-bind:item="item"
-        v-bind:itemType="'Language'" 
-        v-bind:iconHeight="devIconHeight" 
-        v-bind:iconWidth="devIconWidth"
-        v-on:changeSkillCardChild="changeSkillCardParent"/>
+    <div v-if="!skillDynamicCardShow">
+      <ResumeCard v-if="!skillDynamicCardShow"
+      v-bind:itemList="skillsList" 
+      v-bind:language="resumeLanguage"
+      v-bind:itemType="'Skill'"/>
     </div>
-    <h3 class="resume-section-sub-heading">
-      <ToolsIcon class="svg-subheading"/>
-      <span v-if="resumeLanguage == 'Portuguese'">Ferramentas</span>
-      <span v-else>Tools</span>
-    </h3>
-    <div class="skill-flex-icons">
-      <SkillIconList v-for="item in skillsList"
-        v-bind:item="item"
-        v-bind:itemType="'Tool'" 
-        v-bind:iconHeight="devIconHeight" 
-        v-bind:iconWidth="devIconWidth"
-        v-on:changeSkillCardChild="changeSkillCardParent"/>
-    </div>   
+    <div v-else>
+      <SkillDynamicCard v-if="skillDynamicCardShow" v-bind:item="skillsList[skillIndex]"/>
+      <h3 class="resume-section-sub-heading">
+        <CodeIcon class="svg-subheading"/>
+        <span v-if="resumeLanguage == 'Portuguese'">Linguagens de Programação</span>
+        <span v-else>Programming Languages</span>
+      </h3>
+      <div class="skill-flex-icons">
+        <SkillIconList v-for="item in skillsList"
+          v-bind:item="item"
+          v-bind:itemType="'Language'" 
+          v-bind:iconHeight="devIconHeight" 
+          v-bind:iconWidth="devIconWidth"
+          v-on:changeSkillCardChild="changeSkillCardParent"/>
+      </div>
+      <h3 class="resume-section-sub-heading">
+        <ToolsIcon class="svg-subheading"/>
+        <span v-if="resumeLanguage == 'Portuguese'">Ferramentas</span>
+        <span v-else>Tools</span>
+      </h3>
+      <div class="skill-flex-icons">
+        <SkillIconList v-for="item in skillsList"
+          v-bind:item="item"
+          v-bind:itemType="'Tool'" 
+          v-bind:iconHeight="devIconHeight" 
+          v-bind:iconWidth="devIconWidth"
+          v-on:changeSkillCardChild="changeSkillCardParent"/>
+      </div>  
+    </div> 
   </section>
 </template>
 

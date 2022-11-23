@@ -26,7 +26,7 @@
 
 <style scoped>
   .dev-icon{
-    padding:0.5rem;
+    padding: 0.5rem;
     background-color: var(--color-card-background);
     border: solid 2px var(--color-card-border);
     border-radius: 10px;

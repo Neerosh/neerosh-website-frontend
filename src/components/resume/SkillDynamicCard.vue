@@ -15,7 +15,10 @@
       <div class="flex-column">
         <h3 class="info-name">{{ item.name }}</h3>
         <p class="flex-row-svg">
-          <LevelIcon  class="svg-margin-subheader"/>
+          <LevelIcon  class="svg-margin-subheader"
+            v-bind:class="{'skill-basic': item.level === 'Basic' || item.level === 'Básico',
+                           'skill-intermediary': item.level === 'Intermediary' || item.level === 'Intermediário',
+                           'skill-advanced': item.level === 'Advanced' || item.level === 'Avançado',}"/>
           {{ item.level }}
         </p>
         <p class="info-description">{{ item.description }}</p>
@@ -100,5 +103,15 @@
     height: 20px;
     width: 20px;
     margin: 0 0.4rem 0 0;
+  }
+
+  .skill-basic{
+    color: var(--color-skill-basic)
+  }
+  .skill-intermediary{
+    color: var(--color-skill-intermediary)
+  }
+  .skill-advanced{
+    color: var(--color-skill-advanced)
   }
 </style>
