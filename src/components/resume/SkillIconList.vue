@@ -16,11 +16,6 @@
         return this.itemList.filter(item => item.type == this.itemType)
       }
     },
-    data() {
-      return {
-        selectedItem: 0
-      }
-    },
     emits: ["changeSkillCardChild"]
   }
 </script>

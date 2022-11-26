@@ -90,8 +90,8 @@
       <div class="flex-row-skill">
         <div>
           <DynamicDevIcon v-bind:iconName="item.name" 
-          v-bind:iconHeight="'50px'"
-          v-bind:iconWidth="'50px'"/>
+          v-bind:iconHeight="'45px'"
+          v-bind:iconWidth="'45px'"/>
         </div>
         <div class="flex-skill-info">
           <h3 class="header">
@@ -120,7 +120,7 @@
   }
 
   .card-skill{
-    padding: 0rem;
+    padding: 0;
   }
 
   .card-body{
@@ -148,7 +148,7 @@
     display: grid;
     grid-template-columns: repeat(4,minmax(0, 1fr));
     row-gap: 1rem;
-    column-gap: 0.5rem;
+    column-gap: 1rem;
   }
 
   .flex-row-svg{
@@ -187,6 +187,7 @@
 
   .header{
     font-weight: 500;
+    line-height: 1.2;
   }
 
   .description{
