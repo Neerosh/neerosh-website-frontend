@@ -262,27 +262,23 @@
         <span v-if="resumeLanguage == 'Portuguese'">Linguagens de Programação</span>
         <span v-else>Programming Languages</span>
       </h3>
-      <div class="skill-flex-icons">
-        <SkillIconList v-for="item in skillsList"
-          v-bind:item="item"
-          v-bind:itemType="'Language'" 
-          v-bind:iconHeight="devIconHeight" 
-          v-bind:iconWidth="devIconWidth"
-          v-on:changeSkillCardChild="changeSkillCardParent"/>
-      </div>
+      <SkillIconList 
+        v-bind:itemList="skillsList"
+        v-bind:itemType="'Language'" 
+        v-bind:iconHeight="devIconHeight" 
+        v-bind:iconWidth="devIconWidth"
+        v-on:changeSkillCardChild="changeSkillCardParent"/>
       <h3 class="resume-section-sub-heading">
         <ToolsIcon class="svg-subheading"/>
         <span v-if="resumeLanguage == 'Portuguese'">Ferramentas</span>
         <span v-else>Tools</span>
       </h3>
-      <div class="skill-flex-icons">
-        <SkillIconList v-for="item in skillsList"
-          v-bind:item="item"
-          v-bind:itemType="'Tool'" 
-          v-bind:iconHeight="devIconHeight" 
-          v-bind:iconWidth="devIconWidth"
-          v-on:changeSkillCardChild="changeSkillCardParent"/>
-      </div>  
+      <SkillIconList
+        v-bind:itemList="skillsList"
+        v-bind:itemType="'Tool'" 
+        v-bind:iconHeight="devIconHeight" 
+        v-bind:iconWidth="devIconWidth"
+        v-on:changeSkillCardChild="changeSkillCardParent"/>
     </div> 
   </section>
 </template>
@@ -365,7 +361,7 @@
     flex-wrap: nowrap;
     align-items: center;
 
-    margin: 0.5rem 0;
+    margin: 1rem 0;
     color: var(--color-heading);
     font-weight: 600;
   }
@@ -411,12 +407,6 @@
     padding: 0.5rem 0 0 0.5rem;
   }
 
-  .skill-flex-icons{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
   .flex-bar-buttons-skills, .flex-bar-buttons-languages{
     display: flex;
     flex-direction: row;
@@ -456,7 +446,7 @@
       text-align: center;
     }
 
-    .skill-flex-icons, .flex-bar-buttons-skills{
+    .flex-bar-buttons-skills{
       justify-content: center;
     }
   }
