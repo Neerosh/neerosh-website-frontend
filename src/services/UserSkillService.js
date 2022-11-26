@@ -9,8 +9,8 @@ class UserSkillService {
       try {
         const res = await axios.get(url,{
           params:{
-            userId:String(userId),
-            language:String(language)
+            userId: String(userId),
+            language: String(language)
           }
         });
         const data = res.data;
@@ -26,8 +26,8 @@ class UserSkillService {
   }
   static sortSkillsListByLevel(array,orderAscending){
     array.sort(function(a, b){
-      let levelA = a.level;
-      let levelB = b.level;
+      const levelA = a.level;
+      const levelB = b.level;
 
       if (orderAscending){
         switch (levelA){
@@ -133,6 +133,21 @@ class UserSkillService {
         }
       }
     })
+  }
+  //Only String Allowed
+  static sortSkillsListByColumn(array,columnName,orderAscending){
+    array.sort(function(a, b) {
+        const columnA = a[columnName].toLowerCase();
+        const columnB = b[columnName].toLowerCase();
+        if (orderAscending){
+          if(columnA < columnB) { return -1; }
+          if(columnA > columnB) { return 1; }
+        }else{
+          if(columnB < columnA) { return -1; }
+          if(columnB > columnA) { return 1; }
+        }
+        return 0;
+    });
   }
 }
 

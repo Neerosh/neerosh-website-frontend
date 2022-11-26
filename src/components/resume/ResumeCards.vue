@@ -1,4 +1,4 @@
-<script setup>
+<script>
   import LocationIcon from '../icons/generic/LocationIcon.vue'
   import CalendarIcon from '../icons/resume/CalendarIcon.vue'
   import LevelIcon from '../icons/resume/LevelIcon.vue'
@@ -6,12 +6,26 @@
   import EducationItemIcon from '../icons/resume/EducationItemIcon.vue';
   import DynamicDevIcon from '../DynamicDevIcon.vue';
 
-  const props = defineProps({
-    itemList: Object,
-    language: String,
-    itemType: String
-  })
 
+  export default {
+    props: {
+      itemList: Array,
+      language: String,
+      itemType: String,
+      skillType: {
+        typeOf: String,
+        default: ''
+      }
+    },
+    computed: {
+      filteredItemList(){
+        return this.itemList.filter(item => item.type == this.skillType)
+      }
+    },
+    components: {
+      CalendarIcon, DynamicDevIcon, EducationItemIcon, ExperienceItemIcon, LevelIcon, LocationIcon
+    }
+  }
 </script>
 
 <template>
@@ -72,7 +86,7 @@
   </div>
   <!-- DIVISION-->
   <div class="grid-skills" v-if="itemType == 'Skill'">
-    <div class="card-skill" v-for="item in itemList">
+    <div class="card-skill" v-for="item in filteredItemList">
       <div class="flex-row-skill">
         <div>
           <DynamicDevIcon v-bind:iconName="item.name" 
@@ -83,11 +97,11 @@
           <h3 class="header">
             {{ item.name }}
           </h3>
-          <p class="flex-row-svg skill-level" title="Level">
+          <p class="flex-row-svg" title="Level">
             <LevelIcon class="svg-margin-subheader" 
             v-bind:class="{'skill-basic': item.level === 'Basic' || item.level === 'Básico',
-                           'skill-intermediary': item.level === 'Intermediary' || item.level === 'Intermediário',
-                           'skill-advanced': item.level === 'Advanced' || item.level === 'Avançado',}"/>
+                          'skill-intermediary': item.level === 'Intermediary' || item.level === 'Intermediário',
+                          'skill-advanced': item.level === 'Advanced' || item.level === 'Avançado',}"/>
             {{ item.level }}
           </p>
         </div>

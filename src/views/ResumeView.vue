@@ -37,7 +37,8 @@
         resumeLanguage: 'English',
         devIconShowName: false,
         skillDynamicCardShow: false,
-        skillListOrderAscending: false,
+        skillListOrderByLevelAscending: false,
+        skillListOrderByNameAscending: false,
       }
     },
     components:{ 
@@ -77,8 +78,13 @@
 			"resumeLanguage": async function(val, oldVal) {
 				await this.RequestResumeInfo("6359bbec73c2685741589a0f",val)
 			},
-      "skillListOrderAscending": function(val, oldVal){
+      "skillListOrderByLevelAscending": function(val, oldVal){
+        //false = Descending, true = Ascending
         UserSkillService.sortSkillsListByLevel(this.skillsList,val)
+      },
+      "skillListOrderByNameAscending": function(val, oldVal){
+        //false = Descending, true = Ascending
+        UserSkillService.sortSkillsListByColumn(this.skillsList,'name',val)
       }
 		},
     async created(){
@@ -188,10 +194,10 @@
           </span>
         </span>
       </button>
-      <button class="flex-button" @click="skillListOrderAscending = !skillListOrderAscending">
+      <button class="flex-button" @click="skillListOrderByLevelAscending = !skillListOrderByLevelAscending">
         <OrderAscendingIcon class="svg-button" />
         <span v-if="resumeLanguage == 'Portuguese'">
-          <span v-if="skillListOrderAscending">
+          <span v-if="skillListOrderByLevelAscending">
             Ordenar por Nivel (Decrescente)
           </span>
           <span v-else>
@@ -199,7 +205,7 @@
           </span>
         </span>
         <span v-else>
-          <span v-if="skillListOrderAscending">
+          <span v-if="skillListOrderByLevelAscending">
             Order By Level (Descending)
           </span>
           <span v-else>
@@ -207,12 +213,47 @@
           </span>
         </span>
       </button>
+      <button class="flex-button" @click="skillListOrderByNameAscending = !skillListOrderByNameAscending">
+        <OrderAscendingIcon class="svg-button" />
+        <span v-if="resumeLanguage == 'Portuguese'">
+          <span v-if="skillListOrderByNameAscending">
+            Ordenar por Nome (Decrescente)
+          </span>
+          <span v-else>
+            Ordenar por Nome (Ascendente)
+          </span>
+        </span>
+        <span v-else>
+          <span v-if="skillListOrderByNameAscending">
+            Order By Name (Descending)
+          </span>
+          <span v-else>
+            Order By Name (Ascending)
+          </span>
+        </span>
+      </button>
     </div>
     <div v-if="!skillDynamicCardShow">
+      <h3 class="resume-section-sub-heading">
+        <CodeIcon class="svg-subheading"/>
+        <span v-if="resumeLanguage == 'Portuguese'">Linguagens de Programação</span>
+        <span v-else>Programming Languages</span>
+      </h3>
       <ResumeCard v-if="!skillDynamicCardShow"
       v-bind:itemList="skillsList" 
       v-bind:language="resumeLanguage"
-      v-bind:itemType="'Skill'"/>
+      v-bind:itemType="'Skill'"
+      v-bind:skillType="'Language'"/>
+      <h3 class="resume-section-sub-heading">
+        <ToolsIcon class="svg-subheading"/>
+        <span v-if="resumeLanguage == 'Portuguese'">Ferramentas</span>
+        <span v-else>Tools</span>
+      </h3>
+      <ResumeCard v-if="!skillDynamicCardShow"
+      v-bind:itemList="skillsList" 
+      v-bind:language="resumeLanguage"
+      v-bind:itemType="'Skill'"
+      v-bind:skillType="'Tool'"/>
     </div>
     <div v-else>
       <SkillDynamicCard v-if="skillDynamicCardShow" v-bind:item="skillsList[skillIndex]"/>
