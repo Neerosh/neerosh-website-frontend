@@ -37,36 +37,38 @@
 </script>
 
 <template>
-  <header>
+  <div class="container">
     <div>
-      <nav class="navbar">
-        <RouterLink class="navbar-item-logo" to="/">
-          <LogoIcon class="svg-logo" v-bind:height="navLogoHeight"/>
-        </RouterLink>
-        <div class="navbar-inner" id="menuDesktop">
-          <RouterLink active-class="active-link" class="navbar-item" to="/projects">
-            <ProjectsIcon class="svg-navitem" v-bind:height="navIconHeight" v-bind:width="navIconWidth" /> 
-            Projects
+      <header>
+        <nav class="navbar">
+          <RouterLink class="navbar-item-logo" to="/">
+            <LogoIcon class="svg-logo" v-bind:height="navLogoHeight"/>
           </RouterLink>
-          <RouterLink active-class="active-link" class="navbar-item" to="/resume">
-            <ResumeIcon class="svg-navitem" v-bind:height="navIconHeight" v-bind:width="navIconWidth" />
-            Resume
-          </RouterLink>
-        </div>
-        <div class="navbar-toggle" @click="loadMenuMobile()">
-          <BarIcon class="svg-navitem-mobile" v-bind:height="navIconHeight" v-bind:width="navIconWidth" />
-        </div>
-        <div class="navbar-mobile" id="menuMobile">
-        </div>
-      </nav>
+          <div class="navbar-inner" id="menuDesktop">
+            <RouterLink active-class="active-link" class="navbar-item" to="/projects">
+              <ProjectsIcon class="svg-navitem" v-bind:height="navIconHeight" v-bind:width="navIconWidth" /> 
+              Projects
+            </RouterLink>
+            <RouterLink active-class="active-link" class="navbar-item" to="/resume">
+              <ResumeIcon class="svg-navitem" v-bind:height="navIconHeight" v-bind:width="navIconWidth" />
+              Resume
+            </RouterLink>
+          </div>
+          <div class="navbar-toggle" @click="loadMenuMobile()">
+            <BarIcon class="svg-navitem-mobile" v-bind:height="navIconHeight" v-bind:width="navIconWidth" />
+          </div>
+          <div class="navbar-mobile" id="menuMobile">
+          </div>
+        </nav>
+      </header>
+      <main>
+        <RouterView />
+      </main>
     </div>
-  </header>
-  <main>
-    <RouterView />
-  </main>
-  <footer>
-
-  </footer>
+    <footer class="footer">
+      Made By Neerosh 2022 ©
+    </footer>
+  </div>
 </template>
 
 <style scoped>
@@ -145,6 +147,13 @@
     color: var(--color-link);
   }
 
+  .container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   main{
     display: flex;
     flex-direction: column;
@@ -154,6 +163,20 @@
     max-width: 1440px;
     padding: 1rem 2rem;
   }
+
+  footer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: var(--color-navbar-background);
+    border-top: solid 2px var(--color-navbar-border);
+    font-weight: 600;
+  }
+
 
   @media (max-width: 700px){
     .navbar-inner{

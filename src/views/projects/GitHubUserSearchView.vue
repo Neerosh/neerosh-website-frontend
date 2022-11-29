@@ -75,7 +75,7 @@ export default {
       </div>
     </div>
   </div>
-  <GitHubCards v-bind:username="searchUsername" />
+  <GitHubCards v-bind:username="searchUsername" v-bind:itemsPerPage="9"/>
 </template>
        
 <style scoped>

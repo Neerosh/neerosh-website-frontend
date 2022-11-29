@@ -6,20 +6,35 @@
 	export default {
 		props:{ 
 			username: String,
+			itemsPerPage: Number,
 			executeWhenCreated: {
 				typeof: Boolean,
 				default: false
 			},
 		},
-		components: { UserIcon,RepositoryIcon },
+		components: { UserIcon, RepositoryIcon },
 		data() {
 			return {
 				profile: new Object(),
 				repositories: [],
 				searchResult: '',
+				selectedPage: 1
 			};
 		},
+		computed:{
+      totalPagesRepo(){
+        return Math.ceil(this.repositories.length/this.itemsPerPage)
+      },
+      filteredArrayRepo(){
+        return this.repositories.slice(this.itemsPerPage * (this.selectedPage-1), this.itemsPerPage * this.selectedPage)
+      }
+    },
 		methods:{
+			onPageChanged(pageNumber){
+        this.selectedPage = pageNumber
+				document.body.scrollTop = 0; // For Safari
+				document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      },
 			async RunSearch(){
 				const service = new GithubService(this.username)
 				const responseUser = await service.getUser()
@@ -33,6 +48,7 @@
 				this.profile = responseUser
 				this.repositories = service.sortRepositoriesDate(responseUserRepo)
 				this.searchResult = 'Success'
+				this.selectedPage = 1
 			}
 		},
 		watch: {
@@ -64,7 +80,7 @@
 			</div>
 		</div>
 		<div class="card-list">
-		<div class="card" v-for="repo in repositories">
+		<div class="card" v-for="repo in filteredArrayRepo">
 			<div class="card-content">
 					<a class="title-link" v-bind:href="repo.html_url" target="_blank">
 						<RepositoryIcon />{{ repo.name }}</a>
@@ -74,6 +90,15 @@
 			<p>Last updated on {{ repo.updated_at }}</p>
 			</div>
 		</div>
+		</div>
+		<div class="flex-pagination" v-if="(totalPagesRepo > 1)">
+			<button class="pagination-button"
+				v-for="(number, index) in totalPagesRepo" 
+				v-bind:class="number == selectedPage ? 'pagination-button-selected': true"
+				v-bind:id="'Page'+number"
+				@click="onPageChanged(number)">
+				{{ number }}
+			</button>
 		</div>
 	</section>
 	<section v-if="searchResult != 'Success' && searchResult != ''">
@@ -87,15 +112,35 @@
   
 <style scoped>
   svg{
-	height: 20px;
-	width: 20px;
-	margin-right: 0.3rem;
+		min-height: 20px;
+		max-height: 20px;
+		min-width: 20px;
+		max-width: 20px;
+		margin-right: 0.3rem;
   }
+
+	.flex-pagination{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 0.5rem;
+	}
+
+	.pagination-button{
+		border-radius: 0;
+		margin: 0 4px;
+	}
+
+	.pagination-button-selected{
+		background-color: var(--color-button-background-highlight);
+	}
 
 	.flex-center{
 		display: flex;
 		justify-content: center;
 	}
+
 	.card-list{
 		display: grid;
 		grid-template-columns: repeat(3,minmax(0, 1fr));
@@ -115,6 +160,7 @@
 		border: 2px solid var(--color-card-border);
 		background-color: var(--color-card-background);
 		border-radius: 8px;
+		overflow: hidden;
 	}
 	.card-content{
 	  padding: 1rem;
@@ -142,12 +188,13 @@
 	}
 
 	.title-link{
-	display: flex;
-	align-items: center;
-	font-size: 1.2em;
-	color: var(--color-link);
-	text-decoration: none;
-	font-weight: 600;
+		display: flex;
+		align-items: center;
+		font-size: 1.2em;
+		color: var(--color-link);
+		text-decoration: none;
+		font-weight: 600;
+		word-break: break-all;
 	}
 
 	.title-link:hover{
