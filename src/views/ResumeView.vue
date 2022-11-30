@@ -220,7 +220,7 @@
             Ordenar por Nome (Decrescente)
           </span>
           <span v-else>
-            Ordenar por Nome (Ascendente)
+            Ordenar por Nome (Crescente)
           </span>
         </span>
         <span v-else>
