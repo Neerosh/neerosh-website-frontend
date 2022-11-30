@@ -201,7 +201,7 @@
             Ordenar por Nivel (Decrescente)
           </span>
           <span v-else>
-            Ordenar por Nivel (Ascendente)
+            Ordenar por Nivel (Crescente)
           </span>
         </span>
         <span v-else>
