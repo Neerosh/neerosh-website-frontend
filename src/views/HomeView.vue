@@ -7,7 +7,7 @@
     <h1>Welcome</h1>
     <h3>You can check my Github profile and projects below.</h3>
   </div>
-  <GitHubCards v-bind:username="'Neerosh'" v-bind:executeWhenCreated="true" v-bind:itemsPerPage="9"/>
+  <GitHubCards v-bind:username="'Neerosh'" v-bind:executeWhenCreated="true" v-bind:itemsPerPage="100"/>
 </template>
 
 <style scoped>

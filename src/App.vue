@@ -1,7 +1,6 @@
 <script setup>
   import { RouterLink, RouterView } from 'vue-router';
   import { ref } from 'vue'
-  import HomeIcon from './components/icons/menu/HomeIcon.vue';
   import ProjectsIcon from './components/icons/menu/ProjectsIcon.vue';
   import ResumeIcon from './components/icons/menu/ResumeIcon.vue';
   import BarIcon from './components/icons/menu/BarIcon.vue';
@@ -24,12 +23,6 @@
       for (var i = 0; i < navbarElement.childNodes.length; i++) {
         const element = navbarElement.childNodes[i].cloneNode(true)
         navbarMobile.appendChild(element)
-      }
-      for (var i = 0; i < navbarMobile.childNodes.length; i++) {
-        if (navbarMobile.childNodes[i].classList.contains('active-link')){
-          navbarMobile.childNodes[i].classList.remove('active-link')
-          navbarMobile.childNodes[i].classList.add('active-link-mobile')
-        }
       }
     }
   }
@@ -133,7 +126,7 @@
     display: none;
   }
 
-  a:hover,.navbar-toggle:hover{
+  .navbar-item:hover,.navbar-toggle:hover{
     background-color: var(--color-item-background-highlight);
     border-color: var(--color-item-background-highlight);
     transition:  0.4s;
@@ -185,10 +178,6 @@
 
     .navbar-toggle{
       display: flex;
-    }
-
-    .navbar-item{
-      border: none;
     }
 
     .navbar-mobile{
