@@ -5,7 +5,7 @@
   import EmailIcon from '../components/icons/resume/EmailIcon.vue';
   import ExperienceIcon from '../components/icons/resume/ExperienceIcon.vue';
   import IntroductionIcon from '../components/icons/resume/IntroductionIcon.vue';
-  import OrderAscendingIcon from '../components/icons/generic/OrderAscendingIcon.vue';
+  import OrderIcon from '../components/icons/generic/OrderIcon.vue';
   import PhoneIcon from '../components/icons/resume/PhoneIcon.vue';
   import TranslateIcon from '../components/icons/generic/TranslateIcon.vue';
   import ToolsIcon from '../components/icons/generic/ToolsIcon.vue';
@@ -37,13 +37,14 @@
         resumeLanguage: 'English',
         devIconShowName: false,
         skillDynamicCardShow: false,
-        skillListOrderByLevelAscending: false,
-        skillListOrderByNameAscending: false,
+        skillListOrderByLevel: true,
+        experiencesListOrderByDate: true,
+        educationListOrderByDate: true
       }
     },
     components:{ 
-      CodeIcon,DeveloperIcon,EducationIcon,EmailIcon,ExperienceIcon,IntroductionIcon,OrderAscendingIcon,PhoneIcon,TranslateIcon,ToolsIcon,SkillsIcon,LinkIcon,
-      VisibilityIcon,
+      CodeIcon,DeveloperIcon,EducationIcon,EmailIcon,ExperienceIcon,IntroductionIcon,OrderIcon,
+      PhoneIcon,TranslateIcon,ToolsIcon,SkillsIcon,LinkIcon,VisibilityIcon,
       ResumeCard,SkillDynamicCard,SkillIconList
     },
     methods:{
@@ -72,19 +73,26 @@
         this.educationList = await UserEducationService.getUserEducations(userId,language);
         this.experiencesList = await UserExperienceService.getUserExperiences(userId,language);
         this.skillsList = await UserSkillService.getUserSkills(userId,language);
+        UserEducationService.sortSkillsListByDate(this.educationList,'startDate',1)
+        UserExperienceService.sortSkillsListByDate(this.experiencesList,'startDate',1)
+        UserSkillService.sortSkillsListByLevel(this.skillsList,1)
       },
     },
 		watch: {
 			"resumeLanguage": async function(val, oldVal) {
 				await this.RequestResumeInfo("6359bbec73c2685741589a0f",val)
 			},
-      "skillListOrderByLevelAscending": function(val, oldVal){
+      "skillListOrderByLevel": function(val, oldVal){
         //false = Descending, true = Ascending
         UserSkillService.sortSkillsListByLevel(this.skillsList,val)
       },
-      "skillListOrderByNameAscending": function(val, oldVal){
+      "educationListOrderByDate": function(val, oldVal){
         //false = Descending, true = Ascending
-        UserSkillService.sortSkillsListByColumn(this.skillsList,'name',val)
+        UserEducationService.sortSkillsListByDate(this.educationList,'startDate',val)
+      },
+      "experiencesListOrderByDate": function(val, oldVal){
+        //false = Descending, true = Ascending
+        UserExperienceService.sortSkillsListByDate(this.experiencesList,'startDate',val)
       }
 		},
     async created(){
@@ -154,6 +162,27 @@
       <span v-if="resumeLanguage == 'Portuguese'">Educação</span>
       <span v-else>Education</span>
     </h2>
+    <div class="flex-bar-buttons" >
+      <button class="flex-button" @click="(educationListOrderByDate = !educationListOrderByDate)">
+        <OrderIcon class="svg-button" />
+        <span v-if="resumeLanguage == 'Portuguese'">
+          <span v-if="educationListOrderByDate">
+            Ordenar por Data (Decrescente)
+          </span>
+          <span v-else>
+            Ordenar por Data (Crescente)
+          </span>
+        </span>
+        <span v-else>
+          <span v-if="educationListOrderByDate">
+            Order By Date (Descending)
+          </span>
+          <span v-else>
+            Order By Date (Ascending)
+          </span>
+        </span>
+      </button>
+    </div>
     <ResumeCard v-bind:itemList="educationList" 
     v-bind:language="resumeLanguage"
     v-bind:itemType="'Education'"/>
@@ -164,6 +193,27 @@
       <span v-if="resumeLanguage == 'Portuguese'">Experiências</span>
       <span v-else>Experience</span>
     </h2>
+    <div class="flex-bar-buttons" >
+      <button class="flex-button" @click="(experiencesListOrderByDate = !experiencesListOrderByDate)">
+        <OrderIcon class="svg-button" />
+        <span v-if="resumeLanguage == 'Portuguese'">
+          <span v-if="experiencesListOrderByDate">
+            Ordenar por Data (Decrescente)
+          </span>
+          <span v-else>
+            Ordenar por Data (Crescente)
+          </span>
+        </span>
+        <span v-else>
+          <span v-if="experiencesListOrderByDate">
+            Order By Date (Descending)
+          </span>
+          <span v-else>
+            Order By Date (Ascending)
+          </span>
+        </span>
+      </button>
+    </div>
     <ResumeCard v-bind:itemList="experiencesList" 
     v-bind:language="resumeLanguage"
     v-bind:itemType="'Experience'"/>
@@ -174,7 +224,7 @@
       <span v-if="resumeLanguage == 'Portuguese'">Habilidades</span>
       <span v-else>Skills</span>
     </h2>
-    <div class="flex-bar-buttons-skills" >
+    <div class="flex-bar-buttons" >
       <button class="flex-button" @click="skillDynamicCardShow = !skillDynamicCardShow">
         <VisibilityIcon class="svg-button" />
         <span v-if="resumeLanguage == 'Portuguese'">
@@ -194,10 +244,10 @@
           </span>
         </span>
       </button>
-      <button class="flex-button" @click="skillListOrderByLevelAscending = !skillListOrderByLevelAscending">
-        <OrderAscendingIcon class="svg-button" />
+      <button class="flex-button" @click="skillListOrderByLevel = !skillListOrderByLevel">
+        <OrderIcon class="svg-button" />
         <span v-if="resumeLanguage == 'Portuguese'">
-          <span v-if="skillListOrderByLevelAscending">
+          <span v-if="skillListOrderByLevel">
             Ordenar por Nivel (Decrescente)
           </span>
           <span v-else>
@@ -205,30 +255,11 @@
           </span>
         </span>
         <span v-else>
-          <span v-if="skillListOrderByLevelAscending">
+          <span v-if="skillListOrderByLevel">
             Order By Level (Descending)
           </span>
           <span v-else>
             Order By Level (Ascending)
-          </span>
-        </span>
-      </button>
-      <button class="flex-button" @click="skillListOrderByNameAscending = !skillListOrderByNameAscending">
-        <OrderAscendingIcon class="svg-button" />
-        <span v-if="resumeLanguage == 'Portuguese'">
-          <span v-if="skillListOrderByNameAscending">
-            Ordenar por Nome (Decrescente)
-          </span>
-          <span v-else>
-            Ordenar por Nome (Crescente)
-          </span>
-        </span>
-        <span v-else>
-          <span v-if="skillListOrderByNameAscending">
-            Order By Name (Descending)
-          </span>
-          <span v-else>
-            Order By Name (Ascending)
           </span>
         </span>
       </button>
@@ -407,7 +438,7 @@
     padding: 0.5rem 0 0 0.5rem;
   }
 
-  .flex-bar-buttons-skills, .flex-bar-buttons-languages{
+  .flex-bar-buttons, .flex-bar-buttons-languages{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -418,7 +449,7 @@
     justify-content: flex-end;
   }
 
-  .flex-bar-buttons-skills{
+  .flex-bar-buttons{
     column-gap: 0.5rem;
   }
 
@@ -446,7 +477,7 @@
       text-align: center;
     }
 
-    .flex-bar-buttons-skills{
+    .flex-bar-buttons{
       justify-content: center;
     }
   }

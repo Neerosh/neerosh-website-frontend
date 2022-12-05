@@ -6,7 +6,6 @@
   import EducationItemIcon from '../icons/resume/EducationItemIcon.vue';
   import DynamicDevIcon from '../DynamicDevIcon.vue';
 
-
   export default {
     props: {
       itemList: Array,
@@ -20,6 +19,15 @@
     computed: {
       filteredItemList(){
         return this.itemList.filter(item => item.type == this.skillType)
+      }
+    },
+    methods: {
+      formatDate(date){
+        var optionsDate= { year:"numeric", month:"2-digit", timeZone: 'UTC' };
+        if (date !== null){
+          date = new Date(date).toLocaleDateString('en-US', optionsDate);
+        }
+        return date
       }
     },
     components: {
@@ -41,11 +49,11 @@
             <LocationIcon class="svg-margin-subheader"/>
             {{ item.institution }}, {{ item.city }} - {{ item.state}}
           </h4>
-          <h4 class="flex-row-svg">
+          <h4 class="flex-row-svg flex-date">
             <CalendarIcon class="svg-margin-subheader"/>
-            {{ item.startDate }}
+            {{ formatDate(item.startDate) }}
             <span>&nbsp;-&nbsp;</span>
-            <span v-if="item.endDate !== null">{{ item.endDate }}</span>
+            <span v-if="formatDate(item.endDate) !== null">{{ formatDate(item.endDate) }}</span>
             <span v-else>
               <span v-if="language == 'English'">Now</span>
               <span v-if="language == 'Portuguese'">Presente</span>
@@ -69,11 +77,11 @@
             <LocationIcon class="svg-margin-subheader"/>
             {{ item.company }}, {{ item.city }} - {{ item.state}}
           </h4>
-          <h4 class="flex-row-svg">
+          <h4 class="flex-row-svg flex-date">
             <CalendarIcon class="svg-margin-subheader"/>
-            {{ item.startDate }}
+            {{ formatDate(item.startDate) }}
             <span>&nbsp;-&nbsp;</span>
-            <span v-if="item.endDate !== null">{{ item.endDate }}</span>
+            <span v-if="formatDate(item.endDate) !== null">{{ formatDate(item.endDate) }}</span>
             <span v-else>
               <span v-if="language == 'English'">Now</span>
               <span v-if="language == 'Portuguese'">Presente</span>
@@ -156,6 +164,10 @@
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
+  }
+
+  .flex-date{
+    min-width: 150px;
   }
 
   .flex-skill-info{
