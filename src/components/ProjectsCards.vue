@@ -78,14 +78,8 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
-    font-size: 17px;
-  }
-
-  .svg-button{
-    min-height: 25px;
-    min-width: 25px;
-    max-height: 25px;
-    max-width: 25px;
+    padding: 0.5rem;
+    font-size: 1em;
   }
 
   .project-link{

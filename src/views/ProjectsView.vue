@@ -20,7 +20,7 @@
   <template>
     <div class="center-text">
       <h1 class="flex-bar-wrap">
-        <ProjectsIcon class="svg"/>
+        <ProjectsIcon class="svg-header"/>
         Projects
       </h1>
     </div>
@@ -28,14 +28,6 @@
   </template>
   
 <style scoped>
-  .svg {
-    min-height: 30px;
-    max-height: 30px;
-    min-width: 30px;
-    max-width: 30px;
-    margin-right: 0.3rem;
-  }
-
   .flex-bar-wrap{
     display: flex;
     flex-direction: row;

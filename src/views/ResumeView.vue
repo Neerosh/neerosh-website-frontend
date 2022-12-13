@@ -31,8 +31,8 @@
         experiencesList: [],
         educationList: [],
         skillsList: [],
-        devIconHeight: '50px',
-        devIconWidth: '50px',
+        devIconHeight: '3.2em',
+        devIconWidth: '3.2em',
         skillIndex: 0,
         resumeLanguage: 'English',
         devIconShowName: false,
@@ -293,7 +293,7 @@
         <span v-if="resumeLanguage == 'Portuguese'">Linguagens de Programação</span>
         <span v-else>Programming Languages</span>
       </h3>
-      <SkillIconList 
+      <SkillIconList
         v-bind:itemList="skillsList"
         v-bind:itemType="'Language'" 
         v-bind:iconHeight="devIconHeight" 
@@ -401,37 +401,20 @@
     font-weight: 600;
   }
 
-  .svg-heading,.svg-subheading,.svg-basicinfo{
+  .svg-heading,.svg-basicinfo{
     margin: 0 0.3rem 0 0;
-    min-height: 30px;
-    min-width: 30px;
-    max-height: 30px;
-    max-width: 30px;
+    min-height: 1.5em;
+    min-width: 1.5em;
+    max-height: 1.5em;
+    max-width: 1.5em;
   }
 
   .svg-subheading{
-    min-height: 20px;
-    min-width: 20px;
-    max-height: 20px;
-    max-width: 20px;
-  }
-  
-  .svg-button{
     margin: 0 0.3rem 0 0;
-  }
-
-  .svg-basicinfo,.svg-button{
-    min-height: 25px;
-    min-width: 25px;
-    max-height: 25px;
-    max-width: 25px;
-  }
-
-  .flex-button{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
+    min-height: 1.3em;
+    min-width: 1.3em;
+    max-height: 1.3em;
+    max-width: 1.3em;
   }
 
   .resume-section-paragraph{

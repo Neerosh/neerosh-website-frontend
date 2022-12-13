@@ -141,7 +141,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.3rem;
+    padding: 0.4rem 0rem;
     row-gap: 0.5rem;
     column-gap: 0.5rem;
   }
@@ -150,6 +150,7 @@
     justify-content: center;
     flex-wrap: nowrap;
     align-items: flex-start;
+    padding: 0;
   }
 
   .grid-skills{
@@ -157,6 +158,7 @@
     grid-template-columns: repeat(4,minmax(0, 1fr));
     row-gap: 1rem;
     column-gap: 1rem;
+    padding: 0.3rem 0.5rem;
   }
 
   .flex-row-svg{
@@ -184,17 +186,17 @@
   }
 
   .svg-margin-header{
-    min-height: 25px;
-    min-width: 25px;
-    height: 25px;
-    width: 25px;
+    min-height: 1.5rem;
+    min-width: 1.5rem;
+    max-height: 1.5rem;
+    max-width: 1.5rem;
   }
 
   .svg-margin-subheader{
-    min-height: 20px;
-    min-width: 20px;
-    height: 20px;
-    width: 20px;
+    min-height: 1.4em;
+    min-width: 1.4em;
+    max-height: 1.4em;
+    max-width: 1.4em;
   }
 
   .header{
@@ -203,7 +205,6 @@
   }
 
   .description{
-    margin: 0.3rem 0 0 0;
     color: var(--color-text-secondary);
   }
 

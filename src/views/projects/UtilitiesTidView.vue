@@ -98,9 +98,6 @@
 </template>
 
 <style scoped>
-  .description,.warning-text{
-    font-size: 16px;
-  }
 
   .warning-text{
     color: var(--color-warning);
@@ -113,7 +110,7 @@
     padding: 1rem 0.5rem;
   }
 
-  .flex-bar-header, .flex-bar-buttons, .flex-button{
+  .flex-bar-header, .flex-bar-buttons{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -131,7 +128,6 @@
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-
     margin: 1.5rem 0 0.5rem;
     color: var(--color-heading);
     font-weight: 600;
@@ -146,14 +142,6 @@
     margin-right: 0.3rem;
   }
   
-  .svg-button{
-    min-height: 25px;
-    max-height: 25px;
-    min-width: 25px;
-    max-width: 25px;
-    margin-right: 0.3rem;
-  }
-
 
   @media (max-width: 800px) {
     .project-image{

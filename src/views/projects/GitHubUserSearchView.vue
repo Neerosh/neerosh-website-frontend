@@ -51,7 +51,7 @@ export default {
 <template>
   <div class="center-text">
     <h1 class="flex-bar-wrap">
-      <GitHubIcon class="svg"/>GitHub User Search
+      <GitHubIcon class="svg-header"/>GitHub User Search
     </h1>
     <p class="project-description">
       Search request made using javascript and the GitHub API, listing basic information of the user and his publics repositories in cards.
@@ -123,36 +123,25 @@ export default {
     margin: 1rem 0;
     padding: 0.7rem 0.5rem;
     min-width: 50%;
-    font-size: 17px;
     border: solid 2px var(--color-navbar-border);
     border-radius: 10px;
+    font-size: var(--font-size-button);
   }
 
   .project-description{
     padding: 1rem 0.5rem;
     text-align: center;
     color: var(--color-text-secondary);
-    font-size: 16px;
-  }
-
-  .svg {
-    min-height: 30px;
-    max-height: 30px;
-    min-width: 30px;
-    max-width: 30px;
-    margin-right: 0.3rem;
   }
 
   label{
     padding:0.5rem;
     color: var(--color-text-primary);
-    font-size: 17px;
   }
 
   button{
     margin: 1rem 0 1rem 0.5rem;
     padding: 0.7rem 1rem;
-    font-size: 17px;
     border: solid 2px var(--color-navbar-border);
     border-radius: 10px;
     background-color: var(--color-button-background);

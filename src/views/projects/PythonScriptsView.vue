@@ -46,7 +46,7 @@
     padding: 1rem 0.5rem;
   }
 
-  .flex-bar-header, .flex-bar-buttons, .flex-button{
+  .flex-bar-header, .flex-bar-buttons{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -67,11 +67,4 @@
     margin-right: 0.3rem;
   }
 
-  .svg-button{
-    min-height: 25px;
-    max-height: 25px;
-    min-width: 25px;
-    max-width: 25px;
-    margin-right: 0.3rem;
-  }
 </style>

@@ -10,12 +10,12 @@
   <div class="card">
     <div class="wrapper">
       <div class="info-icon-wrapper">
-        <DynamicDevIcon v-bind:iconName="item.name" v-bind:iconHeight="'80px'" v-bind:iconWidth="'80px'" />
+        <DynamicDevIcon v-bind:iconName="item.name" />
       </div>
       <div class="flex-column">
         <h3 class="info-name">{{ item.name }}</h3>
         <p class="flex-row-svg">
-          <LevelIcon  class="svg-margin-subheader"
+          <LevelIcon  class="svg-subheader"
             v-bind:class="{'skill-basic': item.level === 'Basic' || item.level === 'Básico',
                            'skill-intermediary': item.level === 'Intermediary' || item.level === 'Intermediário',
                            'skill-advanced': item.level === 'Advanced' || item.level === 'Avançado',}"/>
@@ -63,8 +63,8 @@
   }
 
   .info-icon-wrapper{
-    min-width: 80px;
-    min-width: 80px;
+    min-width: 6em;
+    min-width: 6em;
     margin-right: 0.4rem;
   }
 
@@ -97,12 +97,12 @@
     row-gap: 0.2rem;
   }
 
-  .svg-margin-subheader{
-    min-height: 20px;
-    min-width: 20px;
-    height: 20px;
-    width: 20px;
+  .svg-subheader{
     margin: 0 0.4rem 0 0;
+    min-height: 1.3em;
+    min-width: 1.3em;
+    max-height: 1.3em;
+    max-width: 1.3em;
   }
 
   .skill-basic{

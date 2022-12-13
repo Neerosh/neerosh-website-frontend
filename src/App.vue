@@ -6,8 +6,6 @@
   import BarIcon from './components/icons/menu/BarIcon.vue';
   import LogoIcon from './components/icons/LogoIcon.vue';
 
-  const navIconHeight = ref('22px')
-  const navIconWidth = ref('22px')
   var navLogoHeight = ref('50px')
   var showMenuMobile = false
 
@@ -39,16 +37,16 @@
           </RouterLink>
           <div class="navbar-inner" id="menuDesktop">
             <RouterLink active-class="active-link" class="navbar-item" to="/projects">
-              <ProjectsIcon class="svg-navitem" v-bind:height="navIconHeight" v-bind:width="navIconWidth" /> 
+              <ProjectsIcon class="svg-navitem" /> 
               Projects
             </RouterLink>
             <RouterLink active-class="active-link" class="navbar-item" to="/resume">
-              <ResumeIcon class="svg-navitem" v-bind:height="navIconHeight" v-bind:width="navIconWidth" />
+              <ResumeIcon class="svg-navitem" />
               Resume
             </RouterLink>
           </div>
           <div class="navbar-toggle" @click="loadMenuMobile()">
-            <BarIcon class="svg-navitem-mobile" v-bind:height="navIconHeight" v-bind:width="navIconWidth" />
+            <BarIcon class="svg-navitem-mobile" />
           </div>
           <div class="navbar-mobile" id="menuMobile">
           </div>
@@ -92,12 +90,17 @@
   }
 
   .svg-navitem, .svg-navitem-mobile{
-    min-height: v-bind(navIconHeight);
-    min-width: v-bind(navIconWidth);
+    min-height: 1.5em;
+    min-width: 1.5em;
+    max-height: 1.5em;
+    max-width: 1.5em;
   }
 
   .svg-logo{
-    min-height: v-bind(navLogoHeight);
+    min-height: 1.5em;
+    min-width: 10em;
+    max-height: 3em;
+    max-width: 10em;
   }
 
   .svg-navitem{

@@ -112,10 +112,10 @@
   
 <style scoped>
   svg{
-		min-height: 20px;
-		max-height: 20px;
-		min-width: 20px;
-		max-width: 20px;
+		min-height: 1.2em;
+		max-height: 1.2em;
+		min-width: 1.2em;
+		max-width: 1.2em;
 		margin-right: 0.3rem;
   }
 
