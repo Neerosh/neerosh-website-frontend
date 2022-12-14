@@ -117,7 +117,7 @@
     <h1 class="basic-info-heading">
       {{ user.fullname }}
     </h1>
-    <h2 class="developer basic-info-heading">
+    <h2 class="flex-row-info-item basic-info-heading">
       <DeveloperIcon class="svg-basicinfo"/>
       {{ userInfo.title }}
     </h2>
@@ -324,12 +324,6 @@
     font-weight: 600;
     color: var(--color-heading);
   }
-  .developer{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-  }
 
   .resume-section-heading{
     display: flex;
@@ -462,6 +456,17 @@
 
     .flex-bar-buttons{
       justify-content: center;
+    }
+  }
+
+  @media print{
+    .resume-section-heading{
+      text-align: left;
+    }
+
+    .flex-bar-buttons, .flex-bar-buttons-languages{
+      justify-content: left;
+      display: none;
     }
   }
 </style>

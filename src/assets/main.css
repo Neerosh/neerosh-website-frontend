@@ -17,6 +17,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 h1{
@@ -82,4 +83,10 @@ button:hover{
 
 .center-text{
   text-align: center;
+}
+
+@media print {
+  .no-print {
+    visibility: hidden;
+  }
 }

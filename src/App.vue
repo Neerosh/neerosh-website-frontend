@@ -198,7 +198,13 @@
     main{
       padding: 1rem;
     }
-
   }
+
+  @media print {
+      footer, header{
+      display: none;
+    }
+  }
+
 
 </style>

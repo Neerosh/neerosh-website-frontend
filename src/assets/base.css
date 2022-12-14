@@ -33,7 +33,7 @@
   --light-color-card-border:#0099ff;
 
   --font-size-default:1em;
-  --font-size-mobile:0.85em;
+  --font-size-mobile:0.9em;
   --font-size-button-default:1em;
   --font-size-button-mobile:1em;
 }
@@ -98,11 +98,18 @@
   }
 }
 
+@media print {
+  :root {
+    --color-background:#ffffff;
+  }
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
   position: relative;
   font-weight: normal;
 }

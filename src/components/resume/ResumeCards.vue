@@ -234,4 +234,15 @@
       grid-template-columns: repeat(2,minmax(0, 1fr));
     }
   }
+
+  @media print{
+    .flex-row{
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .grid-skills{
+      grid-template-columns: repeat(4,minmax(0, 1fr));
+    }
+  }
 </style>
