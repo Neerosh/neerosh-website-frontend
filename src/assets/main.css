@@ -21,11 +21,11 @@ body {
 }
 
 h1{
-  font-size: 1.7em;
+  font-size: 1.5em;
 }
 
 h2{
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 h3{
@@ -47,7 +47,7 @@ button{
   font-size: var(--font-size-button);
   background-color: var(--color-button-background);
   color: var(--color-text-primary);
-  font-weight: 500;
+  font-weight: 600;
   word-break: normal;
 }
 

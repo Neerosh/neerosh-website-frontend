@@ -73,6 +73,7 @@
     padding: 0.5rem 1.5rem;
     background-color: var(--color-navbar-background);
     border-bottom: solid 2px var(--color-navbar-border);
+    font-size: var(--font-size-navbar);
   }
 
   .navbar-inner, .navbar-mobile{

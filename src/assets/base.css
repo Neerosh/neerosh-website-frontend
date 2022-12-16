@@ -32,13 +32,17 @@
   --light-color-link-hover:#44b4ff;
   --light-color-card-border:#0099ff;
 
-  --font-size-default:1em;
+  --font-size-default:0.98em;
+  --font-size-button-default:0.9em;
+  --font-size-navbar-default:1em;
+
   --font-size-mobile:0.9em;
-  --font-size-button-default:1em;
   --font-size-button-mobile:1em;
+  --font-size-navbar-mobile:1.1em;
 }
 
 :root {
+  --font-size-navbar: var(--font-size-navbar-default);
   --font-size: var(--font-size-default);
   --font-size-button: var(--font-size-button-default);
 
@@ -95,6 +99,7 @@
   :root {
     --font-size: var(--font-size-mobile);
     --font-size-button: var(--font-size-button-mobile);
+    --font-size-navbar: var(--font-size-navbar-mobile);
   }
 }
 
@@ -109,7 +114,6 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
   position: relative;
   font-weight: normal;
 }

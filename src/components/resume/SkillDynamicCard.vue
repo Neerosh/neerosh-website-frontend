@@ -4,13 +4,16 @@
   const props = defineProps({
     item: Object
   })
+
+  const iconHeight = '6em'
+  const iconWidth =  '6em'
 </script>
 
 <template>
   <div class="card">
     <div class="wrapper">
       <div class="info-icon-wrapper">
-        <DynamicDevIcon v-bind:iconName="item.name" />
+        <DynamicDevIcon v-bind:iconName="item.name" v-bind:iconHeight="iconHeight" v-bind:iconWidth="iconWidth" />
       </div>
       <div class="flex-column">
         <h3 class="info-name">{{ item.name }}</h3>
@@ -63,8 +66,6 @@
   }
 
   .info-icon-wrapper{
-    min-width: 6em;
-    min-width: 6em;
     margin-right: 0.4rem;
   }
 

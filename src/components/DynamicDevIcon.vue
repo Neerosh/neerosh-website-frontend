@@ -58,12 +58,10 @@
 </template>
 
 <style scoped>
-
   svg{
     min-height: v-bind(iconHeight);
     max-height: v-bind(iconHeight);
     min-width: v-bind(iconWidth);
     max-width: v-bind(iconWidth);
   }
-
 </style>
