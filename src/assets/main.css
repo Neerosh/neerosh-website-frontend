@@ -35,14 +35,16 @@ h3{
 a{
   text-decoration: none;
 }
-
+input{
+  font-size: var(--font-size-input);
+}
 input:focus {
   outline: none;
 }
 
 button{
   padding: 0.5rem 1rem;
-  border: solid 2px var(--color-navbar-border);
+  border: solid 1px var(--color-button-border);
   border-radius: 10px;
   font-size: var(--font-size-button);
   background-color: var(--color-button-background);

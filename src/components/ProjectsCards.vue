@@ -121,7 +121,7 @@
 
   .card-description{
     color: var(--color-text-primary);
-    margin-top: 0.5rem;
+    margin-top: 0.3rem;
   }
 
   @media (max-width: 1000px) {
@@ -130,7 +130,7 @@
     }
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 600px) {
     .projects-list{
       grid-template-columns: minmax(0, 1fr);
     }

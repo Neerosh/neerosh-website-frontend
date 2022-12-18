@@ -7,6 +7,7 @@
   --color-skill-advanced:#72db52;
 
   --dark-color-background:#181818;
+  --dark-color-button-border:#686868;
   --dark-color-text-primary:#eeeeee;
   --dark-color-text-secondary:#b8b8b8;
   --dark-color-heading:#b286ff;
@@ -20,6 +21,7 @@
   --dark-color-card-border:#833dfd;
 
   --light-color-background:#fafafa;
+  --light-color-button-border:#bbbbbb;
   --light-color-text-primary:#000000;
   --light-color-text-secondary:#525252;
   --light-color-heading:#008eec;
@@ -39,6 +41,8 @@
   --font-size-mobile:0.9em;
   --font-size-button-mobile:1em;
   --font-size-navbar-mobile:1.1em;
+
+  --font-size-input: 1em;
 }
 
 :root {
@@ -49,6 +53,7 @@
   --color-button:var(--light-color-text-primary);
   --color-button-background:var(--light-color-navbar-background);
   --color-button-background-highlight:var(--light-color-item-background-highlight);
+  --color-button-border:var(--light-color-button-border);
 
   --color-background:var(--light-color-background);
   --color-card-background:var(--light-color-card-background);
@@ -74,6 +79,7 @@
     --color-button:var(--dark-color-text-primary);
     --color-button-background:var(--dark-color-navbar-background);
     --color-button-background-highlight:var(--dark-color-item-background-highlight);
+    --color-button-border:var(--dark-color-button-border);
 
     --color-background:var(--dark-color-background);
     --color-card-background:var(--dark-color-card-background);

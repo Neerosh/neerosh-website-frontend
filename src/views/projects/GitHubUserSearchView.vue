@@ -57,8 +57,8 @@ export default {
       Search request made using javascript and the GitHub API, listing basic information of the user and his publics repositories in cards.
     </p>
     <div class="flex-bar-nowrap">
-      <input class="input-text" v-model="inputUsername" v-on:keyup.enter="SearchClick" placeholder="Username"/>
-      <button v-on:click="SearchClick">Search</button>
+      <input class="input-search" v-model="inputUsername" v-on:keyup.enter="SearchClick" placeholder="Username"/>
+      <button class="search-button" v-on:click="SearchClick">Search</button>
     </div>
     <div class="flex-bar-colors">
       <div class="flex-color">
@@ -119,13 +119,12 @@ export default {
     padding-right: 0.5rem;
   }
 
-  .input-text{
+  .input-search{
     margin: 1rem 0;
     padding: 0.7rem 0.5rem;
     min-width: 50%;
-    border: solid 2px var(--color-navbar-border);
+    border: solid 1px var(--color-button-border);
     border-radius: 10px;
-    font-size: var(--font-size-button);
   }
 
   .project-description{
@@ -139,28 +138,18 @@ export default {
     color: var(--color-text-primary);
   }
 
-  button{
+  .search-button{
     margin: 1rem 0 1rem 0.5rem;
     padding: 0.7rem 1rem;
-    border: solid 2px var(--color-navbar-border);
-    border-radius: 10px;
-    background-color: var(--color-button-background);
-    color: var(--color-text-primary);
-    font-weight: 500;
   }
-  button:hover{
-    transition: 0.2s;
-    background-color: var(--color-button-background-highlight);
-    cursor: pointer;
-    transition: 0.4s;
-  }
+  
   @media (max-width: 700px){
     .flex-color{
       justify-content: space-between;
       width: 100%;
     }
     
-    .input-text{
+    .input-search{
       width: 100%;
     }
   }

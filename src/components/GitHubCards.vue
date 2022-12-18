@@ -128,7 +128,6 @@
 	}
 
 	.pagination-button{
-		border-radius: 0;
 		margin: 0 4px;
 	}
 

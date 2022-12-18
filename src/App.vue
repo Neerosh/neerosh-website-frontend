@@ -63,17 +63,32 @@
 </template>
 
 <style scoped>
+  header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.3rem;
+    row-gap: 0.3rem;
+    padding: 0.5rem 0rem;
+    background-color: var(--color-navbar-background);
+    border-bottom: solid 2px var(--color-navbar-border);
+    font-size: var(--font-size-navbar);
+  }
+
   .navbar{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
+    padding: 0rem 2rem;
     column-gap: 0.3rem;
     row-gap: 0.3rem;
-    padding: 0.5rem 1.5rem;
     background-color: var(--color-navbar-background);
-    border-bottom: solid 2px var(--color-navbar-border);
-    font-size: var(--font-size-navbar);
+    max-width: 1440px;
+    width: 100%;
   }
 
   .navbar-inner, .navbar-mobile{
@@ -88,6 +103,7 @@
   .navbar-mobile{
     display: none;
     flex-direction: column;
+    margin-left: 0rem;
   }
 
   .svg-navitem, .svg-navitem-mobile{
@@ -192,8 +208,12 @@
     }
 
     .navbar{
+      padding: 0;
       justify-content: space-between;
-      padding: 0.5rem 1rem;
+    }
+
+    header{
+      padding: 1rem;
     }
 
     main{
