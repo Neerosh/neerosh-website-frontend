@@ -13,6 +13,7 @@
 <style scoped>
   .welcome-text{
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
+  
 </style>

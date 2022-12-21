@@ -114,7 +114,7 @@
   }
 
   .svg-logo{
-    min-height: 1.5em;
+    min-height: 3em;
     min-width: 10em;
     max-height: 3em;
     max-width: 10em;
@@ -134,6 +134,10 @@
     border-radius: 5px;
     font-weight: 600;
     border-bottom: solid 3px var(--color-navbar-background);
+  }
+
+  .navbar-item{
+    padding: 0.4rem 0.6rem;
   }
 
   .navbar-item-logo{
@@ -192,6 +196,13 @@
 
 
   @media (max-width: 700px){
+    .svg-logo{
+      min-height: 3em;
+      min-width: 9em;
+      max-height: 3em;
+      max-width: 9em;
+    }
+
     .navbar-inner{
       display: none;
     }
@@ -213,7 +224,7 @@
     }
 
     header{
-      padding: 1rem;
+      padding: 0.5rem 1rem;
     }
 
     main{
