@@ -13,6 +13,8 @@
   import SkillsIcon from '../components/icons/resume/SkillsIcon.vue';
   import LinkIcon from '../components/icons/generic/LinkIcon.vue';
   import VisibilityIcon from '../components/icons/generic/VisibilityIcon.vue';
+  import LocationIcon from '../components/icons/generic/LocationIcon.vue';
+  import BirthdayIcon from '../components/icons/resume/BirthdayIcon.vue';
 
   import ResumeCard from '../components/resume/ResumeCards.vue';
   import SkillDynamicCard from '../components/resume/SkillDynamicCard.vue';
@@ -29,6 +31,7 @@
       return {
         user: Object,
         userInfo: Object,
+        userBirthday: '',
         experiencesList: [],
         educationList: [],
         skillsList: [],
@@ -48,11 +51,27 @@
         educationListOrderByDate: true
       }
     },
-    components:{ 
-      CodeIcon,DeveloperIcon,EducationIcon,EmailIcon,ExperienceIcon,IntroductionIcon,OrderAscendingIcon,OrderDescendingIcon,
-      PhoneIcon,TranslateIcon,ToolsIcon,SkillsIcon,LinkIcon,VisibilityIcon,
-      ResumeCard,SkillDynamicCard,SkillIconList
-    },
+    components:{
+    CodeIcon,
+    DeveloperIcon,
+    EducationIcon,
+    EmailIcon,
+    ExperienceIcon,
+    IntroductionIcon,
+    OrderAscendingIcon,
+    OrderDescendingIcon,
+    PhoneIcon,
+    TranslateIcon,
+    ToolsIcon,
+    SkillsIcon,
+    LinkIcon,
+    VisibilityIcon,
+    ResumeCard,
+    SkillDynamicCard,
+    SkillIconList,
+    LocationIcon,
+    BirthdayIcon
+},
     methods:{
       changeSkillCardParent(_id){
         this.skillIndex = this.skillsList.findIndex((element) => element._id == _id)
@@ -77,22 +96,6 @@
         this.skillListOrderByLevel= true
         this.experiencesListOrderByDate= true
         this.educationListOrderByDate= true
-
-        if (this.resumeLanguage != 'English'){
-          this.buttonPortugueseText = 'Português'
-          this.buttonEnglishText = 'Inglês'
-          this.buttonEducationOrderByDateText = 'Ordenar Por Data'
-          this.buttonExperiencesOrderByDateText = 'Ordenar Por Data'
-          this.buttonSkillsOrderByLevelText = 'Ordenar Por Nível'
-          this.buttonSkillsShowDynamicViewText = 'Visão Dinâmica'
-        }else{
-          this.buttonPortugueseText = 'Portuguese'
-          this.buttonEnglishText = 'English'
-          this.buttonEducationOrderByDateText = 'Order By Date'
-          this.buttonExperiencesOrderByDateText = 'Order By Date'
-          this.buttonSkillsOrderByLevelText = 'Order By Level'
-          this.buttonSkillsShowDynamicViewText = 'Visão Dinâmica'
-        }
       },
       async RequestResumeInfo(userId,language){
         this.user = await UserService.getUser(userId,language);
@@ -103,7 +106,38 @@
         UserEducationService.sortSkillsListByDate(this.educationList,'startDate',1)
         UserExperienceService.sortSkillsListByDate(this.experiencesList,'startDate',1)
         UserSkillService.sortSkillsListByLevel(this.skillsList,1)
+
+        if (this.resumeLanguage != 'English'){
+          this.buttonPortugueseText = 'Português'
+          this.buttonEnglishText = 'Inglês'
+          this.buttonEducationOrderByDateText = 'Ordenar Por Data'
+          this.buttonExperiencesOrderByDateText = 'Ordenar Por Data'
+          this.buttonSkillsOrderByLevelText = 'Ordenar Por Nível'
+          this.buttonSkillsShowDynamicViewText = 'Visão Dinâmica'
+          if (this.CalculateAge(this.user.birthday)){
+            this.userBirthday = this.CalculateAge(this.user.birthday)+' Anos'
+          }
+        }else{
+          this.buttonPortugueseText = 'Portuguese'
+          this.buttonEnglishText = 'English'
+          this.buttonEducationOrderByDateText = 'Order By Date'
+          this.buttonExperiencesOrderByDateText = 'Order By Date'
+          this.buttonSkillsOrderByLevelText = 'Order By Level'
+          this.buttonSkillsShowDynamicViewText = 'Visão Dinâmica'
+          if (this.CalculateAge(this.user.birthday)){
+            this.userBirthday = this.CalculateAge(this.user.birthday)+' Years'
+          }
+        }
       },
+      CalculateAge(birthday){
+        var age= null
+        var dateNow = new Date()
+        if (birthday !== null){
+          var dateBirth = new Date(birthday)
+          age = Math.floor((dateNow-dateBirth)/(365.25*24*60*60*1000));
+        }
+        return age
+      }
     },
 		watch: {
 			"resumeLanguage": async function(val, oldVal) {
@@ -164,6 +198,18 @@
       <DeveloperIcon class="svg-basicinfo"/>
       {{ userInfo.title }}
     </h2>
+    <h3 class="flex-row-info">
+      <p class="info-item">
+        <LocationIcon class="svg-heading"/>
+        {{ user.address }}
+      </p>
+    </h3>
+    <h3 class="flex-row-info" v-if="userBirthday !== ''">
+      <p class="info-item">
+        <BirthdayIcon class="svg-heading"/>
+        {{ userBirthday }}
+      </p>
+    </h3>
     <div class="flex-row-info">
       <div name="Phones" class="flex-row-info-type">
         <h3 class="flex-row-info-item" v-for="phone in user.phones">
