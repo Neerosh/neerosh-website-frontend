@@ -24,11 +24,12 @@
   import VuejsIcon from './icons/development/tools/VuejsIcon.vue';
   import WindowsIcon from './icons/development/tools/WindowsIcon.vue';
 
+  import ComputerMaintenanceIcon from './icons/resume/ComputerMaintenanceIcon.vue';
   const props = defineProps({
     iconName: String,
     iconHeight: String,
     iconWidth: String,
-  })
+  });
 </script>
 
 <template>
@@ -55,6 +56,8 @@
     <VisualStudioIcon     v-if="iconName == 'Visual Studio'"    />
     <VisualStudioCodeIcon v-if="iconName == 'Visual Studio Code'"  />
     <AndroidStudioIcon    v-if="iconName == 'Android Studio'"   />
+
+    <ComputerMaintenanceIcon    v-if="iconName == 'Computer Maintenance' || iconName == 'Manutenção de Computadores'"   />
 </template>
 
 <style scoped>
