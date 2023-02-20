@@ -112,6 +112,9 @@
 @media print {
   :root {
     --color-background:#ffffff;
+    --font-size-navbar: var(--font-size-navbar-default);
+    --font-size: var(--font-size-default);
+    --font-size-button: var(--font-size-button-default);
   }
 }
 

@@ -25,6 +25,8 @@
   import WindowsIcon from './icons/development/tools/WindowsIcon.vue';
 
   import ComputerMaintenanceIcon from './icons/resume/ComputerMaintenanceIcon.vue';
+  import NetworkConfiguationIcon from './icons/resume/NetworkConfiguationIcon.vue';
+
   const props = defineProps({
     iconName: String,
     iconHeight: String,
@@ -57,7 +59,8 @@
     <VisualStudioCodeIcon v-if="iconName == 'Visual Studio Code'"  />
     <AndroidStudioIcon    v-if="iconName == 'Android Studio'"   />
 
-    <ComputerMaintenanceIcon    v-if="iconName == 'Computer Maintenance' || iconName == 'Manutenção de Computadores'"   />
+    <ComputerMaintenanceIcon    v-if="iconName == 'Computer Maintenance'  || iconName == 'Manutenção de Computadores'"   />
+    <NetworkConfiguationIcon    v-if="iconName == 'Network Configuration' || iconName == 'Configuração de Redes'"   />
 </template>
 
 <style scoped>

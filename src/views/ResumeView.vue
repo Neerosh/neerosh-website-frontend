@@ -129,7 +129,7 @@
           this.buttonEducationOrderByDateText = 'Order By Date'
           this.buttonExperiencesOrderByDateText = 'Order By Date'
           this.buttonSkillsOrderByLevelText = 'Order By Level'
-          this.buttonSkillsShowDynamicViewText = 'Visão Dinâmica'
+          this.buttonSkillsShowDynamicViewText = 'Dynamic View'
           if (this.CalculateAge(this.user.birthday)){
             this.userBirthday = this.FormatDate(this.user.birthday,this.resumeLanguage)+' - '+this.CalculateAge(this.user.birthday)+' Years'
           }
@@ -569,6 +569,11 @@
     .flex-bar-buttons, .flex-bar-buttons-languages{
       justify-content: left;
       display: none;
+    }
+
+    .flex-row-info, .flex-row-info-type{
+      flex-direction: row;
+      align-content: center;
     }
   }
 </style>
